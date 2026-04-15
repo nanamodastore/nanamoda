@@ -134,8 +134,14 @@ function verProducto(id){
 
 function volver(){
     document.getElementById("catalogo").style.display = "grid";
+
     let detalles = document.querySelectorAll(".detalle");
     detalles.forEach(d => d.style.display = "none");
+
+    document.getElementById("footer").style.display = "none";
+
+    currentId = null;
+
     window.scrollTo(0,0);
 }
 let currentId = null;
