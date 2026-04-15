@@ -118,10 +118,17 @@ h1 {
 
 <script>
 function verProducto(id){
+
+    currentId = id; // 🔥 ESTA LÍNEA ES LA CLAVE
+
     let detalles = document.querySelectorAll(".detalle");
     detalles.forEach(d => d.style.display = "none");
+
     document.getElementById("catalogo").style.display = "none";
     document.getElementById(id).style.display = "block";
+
+    document.getElementById("footer").style.display = "flex";
+
     window.scrollTo(0,0);
 }
 
