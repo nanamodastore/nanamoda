@@ -128,7 +128,9 @@ function volver(){
 <!-- DETALLES -->
 
 <div id="p1" class="detalle">
-    <div class="volver" onclick="volver()">← Volver</div>
+    <div class="volver" onclick="event.preventDefault(); volver();">
+    ← Volver
+</div>
     <h2>BLUSA DENIM JEANS</h2>
 
     <div class="info">
