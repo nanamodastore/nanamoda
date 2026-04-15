@@ -18,8 +18,10 @@ h1 {
 .grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 15px;
-    padding: 20px;
+    gap: 10px;              /* MENOS espacio entre cards */
+    padding: 10px;          /* MENOS margen lateral */
+    max-width: 900px;       /* controla ancho en PC */
+    margin: 0 auto;         /* centra */
 }
 
 .card {
