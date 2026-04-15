@@ -2,183 +2,183 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Catálogo Estela</title>
 
 <style>
 body {
-  font-family: Arial;
-  background: #f5f5f5;
-  margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f4f4;
+    margin: 0;
+    padding: 20px;
 }
 
 h1 {
-  padding: 20px;
+    margin-bottom: 20px;
 }
 
-.container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 20px;
-  padding: 20px;
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
 }
 
 .card {
-  background: white;
-  border-radius: 12px;
-  overflow: hidden;
-  text-align: center;
-  cursor: pointer;
+    background: #fff;
+    border-radius: 15px;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.card:hover {
+    transform: scale(1.02);
 }
 
 .card img {
-  width: 100%;
-  height: 260px;
-  object-fit: cover;
+    width: 100%;
+    border-radius: 10px;
 }
 
-button {
-  margin: 20px;
-  padding: 10px 15px;
-  border-radius: 20px;
-  border: none;
-  background: black;
-  color: white;
-  cursor: pointer;
+.nombre {
+    font-weight: bold;
+    margin-top: 10px;
 }
 
-.detalle img {
-  width: 100%;
-  margin-bottom: 10px;
+.detalle {
+    display: none;
+}
+
+.volver {
+    display: inline-block;
+    margin-bottom: 15px;
+    background: black;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 20px;
+    text-decoration: none;
 }
 </style>
-</head>
-
-<body>
-
-<div id="catalogo">
-
-<h1>Catálogo Estela</h1>
-
-<div class="container">
-
-<div class="card" onclick="verProducto('denim')">
-<img src="BLUSA DENIM JEANS (1).png">
-<h3>BLUSA DENIM JEANS</h3>
-</div>
-
-<div class="card" onclick="verProducto('carnero')">
-<img src="CARNERO JEANS (1).png">
-<h3>CARNERO JEANS</h3>
-</div>
-
-<div class="card" onclick="verProducto('clasica')">
-<img src="CHAQUETA CLASICA (1).png">
-<h3>CHAQUETA CLÁSICA</h3>
-</div>
-
-<div class="card" onclick="verProducto('parka')">
-<img src="PARKA DE COLORES (1).png">
-<h3>PARKA DE COLORES</h3>
-</div>
-
-<div class="card" onclick="verProducto('gama')">
-<img src="BLUSA JEANS GAMA.png">
-<h3>BLUSA JEANS GAMA</h3>
-</div>
-
-</div>
-
-</div>
-
-<!-- DETALLE -->
-<div id="detalle" style="display:none; padding:20px;" class="detalle">
-
-<button onclick="volver()">← Volver</button>
-
-<div id="contenido"></div>
-
-</div>
 
 <script>
-
-function verProducto(producto){
-
-  document.getElementById("catalogo").style.display = "none";
-  document.getElementById("detalle").style.display = "block";
-
-  let html = "";
-
-  if(producto === "denim"){
-    html = `
-      <h2>BLUSA DENIM JEANS</h2>
-      <img src="BLUSA DENIM JEANS (1).png">
-      <img src="BLUSA DENIM JEANS (2).png">
-      <img src="BLUSA DENIM JEANS (3).png">
-      <img src="BLUSA DENIM JEANS (4).png">
-      <img src="BLUSA DENIM JEANS (5).png">
-    `;
-  }
-
-  if(producto === "carnero"){
-    html = `
-      <h2>CARNERO JEANS</h2>
-      <img src="CARNERO JEANS (1).png">
-      <img src="CARNERO JEANS (2).png">
-      <img src="CARNERO JEANS (3).png">
-      <img src="CARNERO JEANS (4).png">
-      <img src="CARNERO JEANS (5).png">
-      <img src="CARNERO JEANS (6).png">
-      <img src="CARNERO JEANS (7).png">
-      <img src="CARNERO JEANS (8).png">
-      <img src="CARNERO JEANS (9).png">
-      <img src="CARNERO JEANS (10).png">
-    `;
-  }
-
-  if(producto === "clasica"){
-    html = `
-      <h2>CHAQUETA CLÁSICA</h2>
-      <img src="CHAQUETA CLASICA (1).png">
-      <img src="CHAQUETA CLASICA (2).png">
-      <img src="CHAQUETA CLASICA (3).png">
-      <img src="CHAQUETA CLASICA (4).png">
-      <img src="CHAQUETA CLASICA (5).png">
-      <img src="CHAQUETA CLASICA (6).png">
-      <img src="CHAQUETA CLASICA (7).png">
-      <img src="CHAQUETA CLASICA (8).png">
-      <img src="CHAQUETA CLASICA (9).png">
-      <img src="CHAQUETA CLASICA (10).png">
-    `;
-  }
-
-  if(producto === "parka"){
-    html = `
-      <h2>PARKA DE COLORES</h2>
-      <img src="PARKA DE COLORES (1).png">
-      <img src="PARKA DE COLORES (2).png">
-      <img src="PARKA DE COLORES (3).png">
-      <img src="PARKA DE COLORES (4).png">
-      <img src="PARKA DE COLORES (5).png">
-      <img src="PARKA DE COLORES (6).png">
-    `;
-  }
-
-  if(producto === "gama"){
-    html = `
-      <h2>BLUSA JEANS GAMA</h2>
-      <img src="BLUSA JEANS GAMA.png">
-    `;
-  }
-
-  document.getElementById("contenido").innerHTML = html;
+function verProducto(id){
+    document.getElementById("catalogo").style.display = "none";
+    document.getElementById(id).style.display = "block";
 }
 
 function volver(){
-  document.getElementById("catalogo").style.display = "block";
-  document.getElementById("detalle").style.display = "none";
-}
+    document.getElementById("catalogo").style.display = "grid";
 
+    let detalles = document.querySelectorAll(".detalle");
+    detalles.forEach(d => d.style.display = "none");
+}
 </script>
+
+</head>
+<body>
+
+<h1>Catálogo Estela</h1>
+
+<!-- CATALOGO -->
+<div id="catalogo" class="grid">
+
+    <div class="card" onclick="verProducto('p1')">
+        <img src="BLUSA DENIM JEANS (1).png">
+        <div class="nombre">BLUSA DENIM JEANS</div>
+        <div>Tallas: S M L XL</div>
+        <div>Precio: ₡14,500</div>
+        <div>Adelanto: ₡8,500</div>
+    </div>
+
+    <div class="card" onclick="verProducto('p2')">
+        <img src="CARNERO JEANS (1).png">
+        <div class="nombre">CARNERO JEANS STRETCH</div>
+        <div>Tallas: S M L</div>
+        <div>Precio: ₡17,900</div>
+        <div>Adelanto: ₡11,000</div>
+    </div>
+
+    <div class="card" onclick="verProducto('p3')">
+        <img src="CHAQUETA CLASICA (1).png">
+        <div class="nombre">CHAQUETA CLASICA JEANS</div>
+        <div>Tallas: 28 30 32 34</div>
+        <div>Precio: ₡17,500</div>
+        <div>Adelanto: ₡11,000</div>
+    </div>
+
+    <div class="card" onclick="verProducto('p4')">
+        <img src="PARKA DE COLORES (1).png">
+        <div class="nombre">PARKA DE COLORES</div>
+        <div>Tallas: S M L</div>
+        <div>Precio: ₡19,900</div>
+        <div>Adelanto: ₡12,000</div>
+    </div>
+
+    <div class="card" onclick="verProducto('p5')">
+        <img src="CHAQUETA PARKA DE MEZCLILLA (1).png">
+        <div class="nombre">CHAQUETA PARKA DE MEZCLILLA</div>
+        <div>Tallas: S M L</div>
+        <div>Precio: ₡20,900</div>
+        <div>Adelanto: ₡13,500</div>
+    </div>
+
+    <div class="card" onclick="verProducto('p6')">
+        <img src="BLUSA JEANS GAMA.png">
+        <div class="nombre">BLUSA JEANS GAMA</div>
+    </div>
+
+</div>
+
+<!-- DETALLES -->
+
+<div id="p1" class="detalle">
+    <a class="volver" onclick="volver()">← Volver</a>
+    <h2>BLUSA DENIM JEANS</h2>
+    <img src="BLUSA DENIM JEANS (1).png" width="100%">
+    <img src="BLUSA DENIM JEANS (2).png" width="100%">
+    <img src="BLUSA DENIM JEANS (3).png" width="100%">
+    <img src="BLUSA DENIM JEANS (4).png" width="100%">
+    <img src="BLUSA DENIM JEANS (5).png" width="100%">
+</div>
+
+<div id="p2" class="detalle">
+    <a class="volver" onclick="volver()">← Volver</a>
+    <h2>CARNERO JEANS STRETCH</h2>
+    <img src="CARNERO JEANS (1).png" width="100%">
+    <img src="CARNERO JEANS (2).png" width="100%">
+    <img src="CARNERO JEANS (3).png" width="100%">
+    <img src="CARNERO JEANS (4).png" width="100%">
+    <img src="CARNERO JEANS (5).png" width="100%">
+</div>
+
+<div id="p3" class="detalle">
+    <a class="volver" onclick="volver()">← Volver</a>
+    <h2>CHAQUETA CLASICA JEANS</h2>
+    <img src="CHAQUETA CLASICA (1).png" width="100%">
+    <img src="CHAQUETA CLASICA (2).png" width="100%">
+    <img src="CHAQUETA CLASICA (3).png" width="100%">
+</div>
+
+<div id="p4" class="detalle">
+    <a class="volver" onclick="volver()">← Volver</a>
+    <h2>PARKA DE COLORES</h2>
+    <img src="PARKA DE COLORES (1).png" width="100%">
+    <img src="PARKA DE COLORES (2).png" width="100%">
+    <img src="PARKA DE COLORES (3).png" width="100%">
+</div>
+
+<div id="p5" class="detalle">
+    <a class="volver" onclick="volver()">← Volver</a>
+    <h2>CHAQUETA PARKA DE MEZCLILLA</h2>
+    <img src="CHAQUETA PARKA DE MEZCLILLA (1).png" width="100%">
+</div>
+
+<div id="p6" class="detalle">
+    <a class="volver" onclick="volver()">← Volver</a>
+    <h2>BLUSA JEANS GAMA</h2>
+    <img src="BLUSA JEANS GAMA.png" width="100%">
+</div>
 
 </body>
 </html>
