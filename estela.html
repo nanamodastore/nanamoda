@@ -28,12 +28,6 @@ h1 {
     border-radius: 15px;
     padding: 10px;
     text-align: center;
-    cursor: pointer;
-    transition: 0.2s;
-}
-
-.card:hover {
-    transform: scale(1.02);
 }
 
 .card img {
@@ -43,7 +37,16 @@ h1 {
 
 .nombre {
     font-weight: bold;
-    margin-top: 10px;
+    margin: 10px 0;
+}
+
+.btn {
+    background: black;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 15px;
+    cursor: pointer;
+    display: inline-block;
 }
 
 .detalle {
@@ -57,7 +60,12 @@ h1 {
     color: white;
     padding: 10px 15px;
     border-radius: 20px;
-    text-decoration: none;
+    cursor: pointer;
+}
+
+.info {
+    text-align: center;
+    margin-bottom: 20px;
 }
 </style>
 
@@ -83,51 +91,50 @@ function volver(){
 <!-- CATALOGO -->
 <div id="catalogo" class="grid">
 
-    <div class="card" onclick="verProducto('p1')">
+    <div class="card">
         <img src="BLUSA DENIM JEANS (1).png">
         <div class="nombre">BLUSA DENIM JEANS</div>
+        <div class="btn" onclick="verProducto('p1')">Ver detalles</div>
+    </div>
+
+    <div class="card">
+        <img src="CARNERO JEANS (1).png">
+        <div class="nombre">CARNERO JEANS STRETCH</div>
+        <div class="btn" onclick="verProducto('p2')">Ver detalles</div>
+    </div>
+
+    <div class="card">
+        <img src="CHAQUETA CLASICA (1).png">
+        <div class="nombre">CHAQUETA CLASICA JEANS</div>
+        <div class="btn" onclick="verProducto('p3')">Ver detalles</div>
+    </div>
+
+    <div class="card">
+        <img src="PARKA DE COLORES (1).png">
+        <div class="nombre">PARKA DE COLORES</div>
+        <div class="btn" onclick="verProducto('p4')">Ver detalles</div>
+    </div>
+
+    <div class="card">
+        <img src="CHAQUETA PARKA DE MEZCLILLA (1).png">
+        <div class="nombre">CHAQUETA PARKA DE MEZCLILLA</div>
+        <div class="btn" onclick="verProducto('p5')">Ver detalles</div>
+    </div>
+
+</div>
+
+<!-- DETALLES -->
+
+<div id="p1" class="detalle">
+    <div class="volver" onclick="volver()">← Volver</div>
+    <h2>BLUSA DENIM JEANS</h2>
+
+    <div class="info">
         <div>Tallas: S M L XL</div>
         <div>Precio: ₡14,500</div>
         <div>Adelanto: ₡8,500</div>
     </div>
 
-    <div class="card" onclick="verProducto('p2')">
-        <img src="CARNERO JEANS (1).png">
-        <div class="nombre">CARNERO JEANS STRETCH</div>
-        <div>Tallas: S M L</div>
-        <div>Precio: ₡17,900</div>
-        <div>Adelanto: ₡11,000</div>
-    </div>
-
-    <div class="card" onclick="verProducto('p3')">
-        <img src="CHAQUETA CLASICA (1).png">
-        <div class="nombre">CHAQUETA CLASICA JEANS</div>
-        <div>Tallas: 28 30 32 34</div>
-        <div>Precio: ₡17,500</div>
-        <div>Adelanto: ₡11,000</div>
-    </div>
-
-    <div class="card" onclick="verProducto('p4')">
-        <img src="PARKA DE COLORES (1).png">
-        <div class="nombre">PARKA DE COLORES</div>
-        <div>Tallas: S M L</div>
-        <div>Precio: ₡19,900</div>
-        <div>Adelanto: ₡12,000</div>
-    </div>
-
-    <div class="card" onclick="verProducto('p5')">
-        <img src="CHAQUETA PARKA DE MEZCLILLA (1).png">
-        <div class="nombre">CHAQUETA PARKA DE MEZCLILLA</div>
-        <div>Tallas: S M L</div>
-        <div>Precio: ₡20,900</div>
-        <div>Adelanto: ₡13,500</div>
-    </div>
-
-  <!-- DETALLES -->
-
-<div id="p1" class="detalle">
-    <a class="volver" onclick="volver()">← Volver</a>
-    <h2>BLUSA DENIM JEANS</h2>
     <img src="BLUSA DENIM JEANS (1).png" width="100%">
     <img src="BLUSA DENIM JEANS (2).png" width="100%">
     <img src="BLUSA DENIM JEANS (3).png" width="100%">
@@ -136,8 +143,15 @@ function volver(){
 </div>
 
 <div id="p2" class="detalle">
-    <a class="volver" onclick="volver()">← Volver</a>
+    <div class="volver" onclick="volver()">← Volver</div>
     <h2>CARNERO JEANS STRETCH</h2>
+
+    <div class="info">
+        <div>Tallas: S M L</div>
+        <div>Precio: ₡17,900</div>
+        <div>Adelanto: ₡11,000</div>
+    </div>
+
     <img src="CARNERO JEANS (1).png" width="100%">
     <img src="CARNERO JEANS (2).png" width="100%">
     <img src="CARNERO JEANS (3).png" width="100%">
@@ -146,24 +160,45 @@ function volver(){
 </div>
 
 <div id="p3" class="detalle">
-    <a class="volver" onclick="volver()">← Volver</a>
+    <div class="volver" onclick="volver()">← Volver</div>
     <h2>CHAQUETA CLASICA JEANS</h2>
+
+    <div class="info">
+        <div>Tallas: 28 30 32 34</div>
+        <div>Precio: ₡17,500</div>
+        <div>Adelanto: ₡11,000</div>
+    </div>
+
     <img src="CHAQUETA CLASICA (1).png" width="100%">
     <img src="CHAQUETA CLASICA (2).png" width="100%">
     <img src="CHAQUETA CLASICA (3).png" width="100%">
 </div>
 
 <div id="p4" class="detalle">
-    <a class="volver" onclick="volver()">← Volver</a>
+    <div class="volver" onclick="volver()">← Volver</div>
     <h2>PARKA DE COLORES</h2>
+
+    <div class="info">
+        <div>Tallas: S M L</div>
+        <div>Precio: ₡19,900</div>
+        <div>Adelanto: ₡12,000</div>
+    </div>
+
     <img src="PARKA DE COLORES (1).png" width="100%">
     <img src="PARKA DE COLORES (2).png" width="100%">
     <img src="PARKA DE COLORES (3).png" width="100%">
 </div>
 
 <div id="p5" class="detalle">
-    <a class="volver" onclick="volver()">← Volver</a>
+    <div class="volver" onclick="volver()">← Volver</div>
     <h2>CHAQUETA PARKA DE MEZCLILLA</h2>
+
+    <div class="info">
+        <div>Tallas: S M L</div>
+        <div>Precio: ₡20,900</div>
+        <div>Adelanto: ₡13,500</div>
+    </div>
+
     <img src="CHAQUETA PARKA DE MEZCLILLA (1).png" width="100%">
 </div>
 
