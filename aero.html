@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -17,17 +18,17 @@ body {
 .btn-siguiente {
     display: block;
     margin: 30px auto;
-    padding: 12px 20px;
-    background: black;
+    padding: 14px 24px;
+    background: red;
     color: white;
     border: none;
     border-radius: 25px;
-    font-size: 16px;
+    font-size: 18px;
     cursor: pointer;
 }
 
 .btn-siguiente:hover {
-    opacity: 0.8;
+    opacity: 0.85;
 }
 
 h1 {
@@ -91,20 +92,11 @@ h1 {
 </style>
 
 <script>
-    
 function verProducto(id){
-
-    // ocultar TODOS los detalles primero
     let detalles = document.querySelectorAll(".detalle");
     detalles.forEach(d => d.style.display = "none");
-
-    // ocultar catálogo
     document.getElementById("catalogo").style.display = "none";
-
-    // mostrar solo el seleccionado
     document.getElementById(id).style.display = "block";
-
-    // subir arriba
     window.scrollTo(0,0);
 }
 
@@ -113,6 +105,15 @@ function volver(){
     let detalles = document.querySelectorAll(".detalle");
     detalles.forEach(d => d.style.display = "none");
     window.scrollTo(0,0);
+}
+
+function siguienteProducto(actualId){
+    let productos = Array.from(document.querySelectorAll(".detalle"));
+    let index = productos.findIndex(p => p.id === actualId);
+    let siguiente = productos[index + 1];
+    if(siguiente){
+        verProducto(siguiente.id);
+    }
 }
 </script>
 
@@ -125,59 +126,49 @@ function volver(){
 <div id="catalogo" class="grid">
 
 <div class="card">
-    <img src="CAPUCHA MUJER (2).jpg">
+    <img src="CAPUCHA MUJER (1).jpg">
     <div class="nombre">CAPUCHA MUJER</div>
     <div class="btn" onclick="verProducto('p1')">Ver detalles</div>
 </div>
 
 <div class="card">
-    <img src="CASACA CROP (6).jpg">
+    <img src="CASACA CROP (1).jpg">
     <div class="nombre">CASACA CROP</div>
     <div class="btn" onclick="verProducto('p2')">Ver detalles</div>
 </div>
 
 <div class="card">
-    <img src="CHALECO HOMBRE (2).jpg">
+    <img src="CHALECO HOMBRE (1).jpg">
     <div class="nombre">CHALECO HOMBRE</div>
     <div class="btn" onclick="verProducto('p3')">Ver detalles</div>
 </div>
 
 </div>
 
-<!-- DETALLE 1 -->
 <div id="p1" class="detalle">
 <div class="volver" onclick="volver()">← Volver</div>
-
 <h2>CAPUCHA MUJER</h2>
-
 <div class="info">
     <div>Tallas: S M L XL</div>
     <div>Precio: ₡13,500</div>
     <div>Adelanto: ₡8,500</div>
 </div>
-
 <img src="CAPUCHA MUJER (1).jpg" width="100%">
 <img src="CAPUCHA MUJER (2).jpg" width="100%">
 <img src="CAPUCHA MUJER (3).jpg" width="100%">
 <img src="CAPUCHA MUJER (4).jpg" width="100%">
 <img src="CAPUCHA MUJER (5).jpg" width="100%">
-
-<button class="btn-siguiente" onclick="verProducto('p2')">SIGUIENTE ESTILO
-
+<button class="btn-siguiente" onclick="siguienteProducto('p1')">Siguiente estilo →</button>
 </div>
 
-<!-- DETALLE 2 -->
 <div id="p2" class="detalle">
 <div class="volver" onclick="volver()">← Volver</div>
-
 <h2>CASACA CROP</h2>
-
 <div class="info">
     <div>Tallas: UNICA S M</div>
     <div>Precio: ₡11,900</div>
     <div>Adelanto: ₡7,000</div>
 </div>
-
 <img src="CASACA CROP (1).jpg" width="100%">
 <img src="CASACA CROP (2).jpg" width="100%">
 <img src="CASACA CROP (3).jpg" width="100%">
@@ -185,31 +176,22 @@ function volver(){
 <img src="CASACA CROP (5).jpg" width="100%">
 <img src="CASACA CROP (6).jpg" width="100%">
 <img src="CASACA CROP (7).jpg" width="100%">
-
-<button class="btn-siguiente" onclick="verProducto('p3')">Siguiente →</button>
-
+<button class="btn-siguiente" onclick="siguienteProducto('p2')">Siguiente estilo →</button>
 </div>
 
-<!-- DETALLE 3 -->
 <div id="p3" class="detalle">
 <div class="volver" onclick="volver()">← Volver</div>
-
 <h2>CHALECO HOMBRE</h2>
-
 <div class="info">
     <div>Tallas: S M L XL</div>
     <div>Precio: ₡12,500</div>
     <div>Adelanto: ₡8,000</div>
 </div>
-
 <img src="CHALECO HOMBRE (1).jpg" width="100%">
 <img src="CHALECO HOMBRE (2).jpg" width="100%">
 <img src="CHALECO HOMBRE (3).jpg" width="100%">
 <img src="CHALECO HOMBRE (4).jpg" width="100%">
 <img src="CHALECO HOMBRE (5).jpg" width="100%">
-
-<!-- sin siguiente aún -->
-
 </div>
 
 </body>
