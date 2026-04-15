@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Catálogo Jackets Aero</title>
+
+<style>
+body {
+    font-family: Arial;
+    background: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+    padding-top: 70px;
+}
+
+h1 {
+    margin-bottom: 20px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: #fff;
+    border-radius: 15px;
+    padding: 10px;
+    text-align: center;
+}
+
+.card img {
+    width: 100%;
+    height: 260px;
+    object-fit: contain;
+    background: #fff;
+    border-radius: 10px;
+}
+
+.nombre {
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.btn {
+    background: black;
+    color: white;
+    padding: 8px 12px;
+    border-radius: 15px;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.detalle {
+    display: none;
+}
+
+.volver {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    background: black;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    z-index: 999;
+}
+
+.info {
+    text-align: center;
+    margin-bottom: 20px;
+}
+</style>
+
+<script>
+function verProducto(id){
+    document.getElementById("catalogo").style.display = "none";
+    document.getElementById(id).style.display = "block";
+    window.scrollTo(0,0);
+}
+
+function volver(){
+    document.getElementById("catalogo").style.display = "grid";
+    let detalles = document.querySelectorAll(".detalle");
+    detalles.forEach(d => d.style.display = "none");
+    window.scrollTo(0,0);
+}
+</script>
+
+</head>
+
+<body>
+
+<h1>Catálogo Jackets Aero</h1>
+
+<div id="catalogo" class="grid">
+
+<!-- PRODUCTO EJEMPLO -->
+
+<div class="card">
+    <img src="CAPUCHA MUJER (1).jpg">
+    <div class="nombre">CAPUCHA MUJER</div>
+    <div class="btn" onclick="verProducto('p1')">Ver detalles</div>
+</div>
+
+</div>
+
+
+<!-- DETALLE PRODUCTO -->
+
+<div id="p1" class="detalle">
+
+<div class="volver" onclick="volver()">← Volver</div>
+
+<h2>CAPUCHA MUJER</h2>
+
+<div class="info">
+    <div>Tallas: S M L</div>
+    <div>Precio: ₡XXXX</div>
+    <div>Adelanto: ₡XXXX</div>
+</div>
+
+<img src="CAPUCHA MUJER (1).jpg" width="100%">
+<img src="CAPUCHA MUJER (2).jpg" width="100%">
+<img src="CAPUCHA MUJER (3).jpg" width="100%">
+<img src="CAPUCHA MUJER (4).jpg" width="100%">
+<img src="CAPUCHA MUJER (5).jpg" width="100%">
+
+</div>
+
+</body>
+</html>
