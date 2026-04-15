@@ -5,107 +5,149 @@
 <title>Catálogo Estela</title>
 
 <style>
-body {
-  font-family: Arial;
-  background:#f5f5f5;
-  margin:0;
-  padding:20px;
-}
+body { font-family: Arial; background: #f5f5f5; }
 
-h1 { margin-top:60px; }
+h1 { padding: 20px; }
 
-.btn-volver {
-  position: fixed;
-  top:20px;
-  left:20px;
-  background:black;
-  color:white;
-  padding:12px 18px;
-  border-radius:25px;
-  text-decoration:none;
-  font-weight:bold;
-}
-
-.grid {
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
-  gap:20px;
-  margin-top:20px;
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
 }
 
 .card {
-  background:white;
-  border-radius:12px;
-  overflow:hidden;
-  text-align:center;
-  cursor:pointer;
+  background: white;
+  padding: 15px;
+  border-radius: 15px;
+  text-align: center;
 }
 
 .card img {
-  width:100%;
-  height:260px;
-  object-fit:cover;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.thumbs {
+  display: flex;
+  gap: 5px;
+  margin-top: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.thumbs img {
+  width: 50px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+button {
+  margin: 20px;
+  padding: 10px 15px;
+  border-radius: 20px;
+  border: none;
+  background: black;
+  color: white;
+  cursor: pointer;
 }
 </style>
 </head>
 
 <body>
 
-<a href="index.html" class="btn-volver">← Volver</a>
+<a href="index.html"><button>← Volver</button></a>
+
 <h1>Catálogo Estela</h1>
 
-<div class="grid">
+<div class="container">
 
-<div class="card" onclick="abrirProducto('BLUSA DENIM JEANS','₡13,900','₡8,500','BLUSA DENIM JEANS (1).png',['BLUSA DENIM JEANS (2).png'])">
-<img src="BLUSA DENIM JEANS (1).png">
-<h3>BLUSA DENIM JEANS</h3>
-<p>Precio: ₡13,900</p>
-<p>Adelanto: ₡8,500</p>
-</div>
-
-<div class="card" onclick="abrirProducto('CARNERO JEANS','₡17,900','₡11,000','CARNERO JEANS (1).png',[])">
-<img src="CARNERO JEANS (1).png">
-<h3>CARNERO JEANS</h3>
-<p>Precio: ₡17,900</p>
-<p>Adelanto: ₡11,000</p>
-</div>
-
-</div>
-
-<!-- MODAL -->
-<div id="modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); justify-content:center; align-items:center;">
-  <div style="background:white; padding:20px; border-radius:12px; max-width:400px; width:90%; text-align:center;">
-    <span onclick="cerrarModal()" style="cursor:pointer; float:right;">✖</span>
-    <img id="modalImg" style="width:100%; border-radius:10px;">
-    <div id="extraImgs"></div>
-    <h3 id="modalNombre"></h3>
-    <p id="modalPrecio"></p>
-    <p id="modalAdelanto"></p>
-    <a id="btnWhatsApp" target="_blank" style="display:inline-block;margin-top:15px;background:#25D366;color:white;padding:12px 18px;border-radius:25px;text-decoration:none;">📲 Pedir por WhatsApp</a>
+<!-- BLUSA DENIM -->
+<div class="card">
+  <img id="denim" src="BLUSA DENIM JEANS (1).png">
+  <div class="thumbs">
+    <img src="BLUSA DENIM JEANS (1).png" onclick="cambiar('denim', this)">
+    <img src="BLUSA DENIM JEANS (2).png" onclick="cambiar('denim', this)">
+    <img src="BLUSA DENIM JEANS (3).png" onclick="cambiar('denim', this)">
+    <img src="BLUSA DENIM JEANS (4).png" onclick="cambiar('denim', this)">
+    <img src="BLUSA DENIM JEANS (5).png" onclick="cambiar('denim', this)">
   </div>
+  <h3>BLUSA DENIM JEANS</h3>
+</div>
+
+<!-- BLUSA GAMA -->
+<div class="card">
+  <img src="BLUSA JEANS GAMA.png">
+  <h3>BLUSA JEANS GAMA</h3>
+</div>
+
+<!-- CARNERO -->
+<div class="card">
+  <img id="carnero" src="CARNERO JEANS (1).png">
+  <div class="thumbs">
+    <img src="CARNERO JEANS (1).png" onclick="cambiar('carnero', this)">
+    <img src="CARNERO JEANS (2).png" onclick="cambiar('carnero', this)">
+    <img src="CARNERO JEANS (3).png" onclick="cambiar('carnero', this)">
+    <img src="CARNERO JEANS (4).png" onclick="cambiar('carnero', this)">
+    <img src="CARNERO JEANS (5).png" onclick="cambiar('carnero', this)">
+    <img src="CARNERO JEANS (6).png" onclick="cambiar('carnero', this)">
+    <img src="CARNERO JEANS (7).png" onclick="cambiar('carnero', this)">
+    <img src="CARNERO JEANS (8).png" onclick="cambiar('carnero', this)">
+    <img src="CARNERO JEANS (9).png" onclick="cambiar('carnero', this)">
+    <img src="CARNERO JEANS (10).png" onclick="cambiar('carnero', this)">
+  </div>
+  <h3>CARNERO JEANS</h3>
+</div>
+
+<!-- CHAQUETA CLASICA -->
+<div class="card">
+  <img id="clasica" src="CHAQUETA CLASICA (1).png">
+  <div class="thumbs">
+    <img src="CHAQUETA CLASICA (1).png" onclick="cambiar('clasica', this)">
+    <img src="CHAQUETA CLASICA (2).png" onclick="cambiar('clasica', this)">
+    <img src="CHAQUETA CLASICA (3).png" onclick="cambiar('clasica', this)">
+    <img src="CHAQUETA CLASICA (4).png" onclick="cambiar('clasica', this)">
+    <img src="CHAQUETA CLASICA (5).png" onclick="cambiar('clasica', this)">
+    <img src="CHAQUETA CLASICA (6).png" onclick="cambiar('clasica', this)">
+    <img src="CHAQUETA CLASICA (7).png" onclick="cambiar('clasica', this)">
+    <img src="CHAQUETA CLASICA (8).png" onclick="cambiar('clasica', this)">
+    <img src="CHAQUETA CLASICA (9).png" onclick="cambiar('clasica', this)">
+    <img src="CHAQUETA CLASICA (10).png" onclick="cambiar('clasica', this)">
+  </div>
+  <h3>CHAQUETA CLÁSICA</h3>
+</div>
+
+<!-- CHAQUETA GAMA -->
+<div class="card">
+  <img src="CHAQUETA CLASICA GAMA.png">
+  <h3>CHAQUETA CLÁSICA GAMA</h3>
+</div>
+
+<!-- CHAQUETA MEZCLILLA -->
+<div class="card">
+  <img src="CHAQUETA PARKA DE MEZCLILLA.png">
+  <h3>PARKA MEZCLILLA</h3>
+</div>
+
+<!-- PARKA COLORES -->
+<div class="card">
+  <img id="parka" src="PARKA DE COLORES (1).png">
+  <div class="thumbs">
+    <img src="PARKA DE COLORES (1).png" onclick="cambiar('parka', this)">
+    <img src="PARKA DE COLORES (2).png" onclick="cambiar('parka', this)">
+    <img src="PARKA DE COLORES (3).png" onclick="cambiar('parka', this)">
+    <img src="PARKA DE COLORES (4).png" onclick="cambiar('parka', this)">
+    <img src="PARKA DE COLORES (5).png" onclick="cambiar('parka', this)">
+    <img src="PARKA DE COLORES (6).png" onclick="cambiar('parka', this)">
+  </div>
+  <h3>PARKA DE COLORES</h3>
+</div>
+
 </div>
 
 <script>
-function abrirProducto(nombre, precio, adelanto, imgPrincipal, extras=[]) {
-  document.getElementById("modal").style.display = "flex";
-  document.getElementById("modalImg").src = imgPrincipal;
-  document.getElementById("modalNombre").innerText = nombre;
-  document.getElementById("modalPrecio").innerText = "Precio: " + precio;
-  document.getElementById("modalAdelanto").innerText = "Adelanto: " + adelanto;
-
-  let mensaje = `Hola, quiero este producto:\n${nombre}\nPrecio: ${precio}\nAdelanto: ${adelanto}`;
-  let numero = "50688888888"; // CAMBIA SOLO ESTE NÚMERO
-  document.getElementById("btnWhatsApp").href = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
-
-  let contenedor = document.getElementById("extraImgs");
-  contenedor.innerHTML = "";
-  extras.forEach(img=>{
-    contenedor.innerHTML += `<img src="${img}" style="width:60px;margin:5px;cursor:pointer;" onclick="document.getElementById('modalImg').src='${img}'">`;
-  });
-}
-
-function cerrarModal(){
-  document.getElementById("modal").style.display = "none";
+function cambiar(id, img){
+  document.getElementById(id).src = img.src;
 }
 </script>
 
