@@ -91,9 +91,20 @@ h1 {
 </style>
 
 <script>
+    
 function verProducto(id){
+
+    // ocultar TODOS los detalles primero
+    let detalles = document.querySelectorAll(".detalle");
+    detalles.forEach(d => d.style.display = "none");
+
+    // ocultar catálogo
     document.getElementById("catalogo").style.display = "none";
+
+    // mostrar solo el seleccionado
     document.getElementById(id).style.display = "block";
+
+    // subir arriba
     window.scrollTo(0,0);
 }
 
