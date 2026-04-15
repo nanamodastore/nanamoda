@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Catálogo Jackets Aero</title>
+
+<style>
+body {
+    font-family: Arial;
+    background: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+    padding-top: 70px;
+    padding-bottom: 80px;
+}
+
+.footer-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: white;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-btn {
+    flex: 1;
+    margin: 0 5px;
+    padding: 14px;
+    border-radius: 25px;
+    border: none;
+    font-size: 16px;
+    color: white;
+    cursor: pointer;
+}
+
+.anterior { background: #444; }
+.siguiente { background: red; }
+</style>
+
+<script>
+let currentId = null;
+
+function verProducto(id){
+    currentId = id;
+    let detalles = document.querySelectorAll(".detalle");
+    detalles.forEach(d => d.style.display = "none");
+    document.getElementById("catalogo").style.display = "none";
+    document.getElementById(id).style.display = "block";
+    window.scrollTo(0,0);
+}
+
+function volver(){
+    document.getElementById("catalogo").style.display = "grid";
+    let detalles = document.querySelectorAll(".detalle");
+    detalles.forEach(d => d.style.display = "none");
+    currentId = null;
+    window.scrollTo(0,0);
+}
+
+function siguiente(){
+    if(!currentId) return;
+    let productos = Array.from(document.querySelectorAll(".detalle"));
+    let index = productos.findIndex(p => p.id === currentId);
+    let siguiente = productos[index + 1];
+    if(siguiente){
+        verProducto(siguiente.id);
+    }
+}
+
+function anterior(){
+    if(!currentId) return;
+    let productos = Array.from(document.querySelectorAll(".detalle"));
+    let index = productos.findIndex(p => p.id === currentId);
+    let anterior = productos[index - 1];
+    if(anterior){
+        verProducto(anterior.id);
+    }
+}
+</script>
+</head>
+
+<body>
+
+<h1>Catálogo Jackets Aero</h1>
+
+<div id="catalogo">
+<button onclick="verProducto('p1')">Ver producto</button>
+</div>
+
+<div id="p1" class="detalle">
+<div onclick="volver()">← Volver</div>
+<h2>Producto demo</h2>
+</div>
+
+<div class="footer-nav">
+<button class="footer-btn anterior" onclick="anterior()">← Estilo anterior</button>
+<button class="footer-btn siguiente" onclick="siguiente()">Siguiente estilo →</button>
+</div>
+
+</body>
+</html>
