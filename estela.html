@@ -11,6 +11,7 @@ body {
     background: #f4f4f4;
     margin: 0;
     padding: 20px;
+    padding-top: 70px;
 }
 
 h1 {
@@ -35,6 +36,7 @@ h1 {
     height: 250px;
     object-fit: contain;
     background: #fff;
+    border-radius: 10px;
 }
 
 .nombre {
@@ -56,13 +58,15 @@ h1 {
 }
 
 .volver {
-    display: inline-block;
-    margin-bottom: 15px;
+    position: fixed;
+    top: 15px;
+    left: 15px;
     background: black;
     color: white;
     padding: 10px 15px;
     border-radius: 20px;
     cursor: pointer;
+    z-index: 999;
 }
 
 .info {
@@ -75,6 +79,8 @@ h1 {
 function verProducto(id){
     document.getElementById("catalogo").style.display = "none";
     document.getElementById(id).style.display = "block";
+
+    window.scrollTo(0, 0); // 🔥 arregla apertura arriba
 }
 
 function volver(){
@@ -82,6 +88,8 @@ function volver(){
 
     let detalles = document.querySelectorAll(".detalle");
     detalles.forEach(d => d.style.display = "none");
+
+    window.scrollTo(0, 0); // 🔥 vuelve arriba al catálogo
 }
 </script>
 
@@ -128,9 +136,7 @@ function volver(){
 <!-- DETALLES -->
 
 <div id="p1" class="detalle">
-    <div class="volver" onclick="event.preventDefault(); volver();">
-    ← Volver
-</div>
+    <div class="volver" onclick="volver()">← Volver</div>
     <h2>BLUSA DENIM JEANS</h2>
 
     <div class="info">
