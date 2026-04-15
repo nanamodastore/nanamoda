@@ -7,105 +7,138 @@
 <style>
 body {
   font-family: Arial;
-  background:#f5f5f5;
-  margin:0;
-  padding:20px;
+  background: #f5f5f5;
 }
 
-h1 { margin-top:60px; }
-
-.btn-volver {
-  position: fixed;
-  top:20px;
-  left:20px;
-  background:black;
-  color:white;
-  padding:12px 18px;
-  border-radius:25px;
-  text-decoration:none;
-  font-weight:bold;
+h1 {
+  padding: 20px;
 }
 
-.grid {
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
-  gap:20px;
-  margin-top:20px;
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
 }
 
 .card {
-  background:white;
-  border-radius:12px;
-  overflow:hidden;
-  text-align:center;
-  cursor:pointer;
+  background: white;
+  padding: 15px;
+  border-radius: 15px;
+  text-align: center;
 }
 
 .card img {
-  width:100%;
-  height:260px;
-  object-fit:cover;
+  width: 100%;
+  border-radius: 10px;
+}
+
+.thumbs {
+  display: flex;
+  gap: 5px;
+  margin-top: 10px;
+  justify-content: center;
+}
+
+.thumbs img {
+  width: 50px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+button {
+  margin: 20px;
+  padding: 10px 15px;
+  border-radius: 20px;
+  border: none;
+  background: black;
+  color: white;
+  cursor: pointer;
 }
 </style>
 </head>
 
 <body>
 
-<a href="index.html" class="btn-volver">← Volver</a>
+<a href="index.html"><button>← Volver</button></a>
+
 <h1>Catálogo Diana</h1>
 
-<div class="grid">
+<div class="container">
 
-<div class="card" onclick="abrirProducto('BLAZER ANDREA VINO','₡18,500','₡12,000','BLAZER ANDREA (1).png',['BLAZER ANDREA (2).png'])">
-<img src="BLAZER ANDREA (1).png">
-<h3>BLAZER ANDREA VINO</h3>
-<p>Precio: ₡18,500</p>
-<p>Adelanto: ₡12,000</p>
-</div>
-
-<div class="card" onclick="abrirProducto('OVEROL TATIANA BEIGE','₡19,500','₡12,500','OVEROL TATIANA BEIGE.png',[])">
-<img src="OVEROL TATIANA BEIGE.png">
-<h3>OVEROL TATIANA BEIGE</h3>
-<p>Precio: ₡19,500</p>
-<p>Adelanto: ₡12,500</p>
-</div>
-
-</div>
-
-<!-- MODAL -->
-<div id="modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); justify-content:center; align-items:center;">
-  <div style="background:white; padding:20px; border-radius:12px; max-width:400px; width:90%; text-align:center;">
-    <span onclick="cerrarModal()" style="cursor:pointer; float:right;">✖</span>
-    <img id="modalImg" style="width:100%;">
-    <div id="extraImgs"></div>
-    <h3 id="modalNombre"></h3>
-    <p id="modalPrecio"></p>
-    <p id="modalAdelanto"></p>
-    <a id="btnWhatsApp" target="_blank" style="display:inline-block;margin-top:15px;background:#25D366;color:white;padding:12px 18px;border-radius:25px;">📲 Pedir por WhatsApp</a>
+<!-- EJEMPLO CON GALERÍA -->
+<div class="card">
+  <img id="p1" src="BLAZER ANDREA (1).png">
+  <div class="thumbs">
+    <img src="BLAZER ANDREA (1).png" onclick="cambiar('p1', this)">
+    <img src="BLAZER ANDREA (2).png" onclick="cambiar('p1', this)">
   </div>
+  <h3>BLAZER ANDREA</h3>
+</div>
+
+<!-- AUTOMÁTICO RESTO -->
+<div class="card"><img src="BLAZER SAMANTA.png"><h3>BLAZER SAMANTA</h3></div>
+<div class="card"><img src="BLAZER SOL.png"><h3>BLAZER SOL</h3></div>
+<div class="card"><img src="BLAZER ELIZA.png"><h3>BLAZER ELIZA</h3></div>
+
+<div class="card"><img src="BLUSA BELEN.png"><h3>BLUSA BELEN</h3></div>
+<div class="card"><img src="BLUSA CINTIA.png"><h3>BLUSA CINTIA</h3></div>
+<div class="card"><img src="BLUSA FATIMA.png"><h3>BLUSA FATIMA</h3></div>
+<div class="card"><img src="BLUSA IVON.png"><h3>BLUSA IVON</h3></div>
+<div class="card"><img src="BLUSA JEANS.png"><h3>BLUSA JEANS</h3></div>
+<div class="card"><img src="BLUSA MARGOT.png"><h3>BLUSA MARGOT</h3></div>
+<div class="card"><img src="BLUSA MOKA.png"><h3>BLUSA MOKA</h3></div>
+<div class="card"><img src="BLUSA NAYELI.png"><h3>BLUSA NAYELI</h3></div>
+<div class="card"><img src="BLUSA NAOMI.png"><h3>BLUSA NAOMI</h3></div>
+<div class="card"><img src="BLUSA THAIS.png"><h3>BLUSA THAIS</h3></div>
+
+<div class="card"><img src="CASACA BRISA.png"><h3>CASACA BRISA</h3></div>
+<div class="card"><img src="CHAVO YAQUI.png"><h3>CHAVO YAQUI</h3></div>
+<div class="card"><img src="CHAVO YAQUI COLOR.png"><h3>CHAVO YAQUI COLOR</h3></div>
+
+<div class="card"><img src="ENTERIZO XIOMARA.png"><h3>ENTERIZO XIOMARA</h3></div>
+<div class="card"><img src="ENTERIZO IRINA.png"><h3>ENTERIZO IRINA</h3></div>
+
+<div class="card"><img src="ENAGUA DIANA.png"><h3>ENAGUA DIANA</h3></div>
+<div class="card"><img src="FALDA FLOR.png"><h3>FALDA FLOR</h3></div>
+<div class="card"><img src="FALDA GRECIA.png"><h3>FALDA GRECIA</h3></div>
+
+<div class="card"><img src="OVEROL ABIGAIL.png"><h3>OVEROL ABIGAIL</h3></div>
+<div class="card"><img src="OVEROL SUNNY.png"><h3>OVEROL SUNNY</h3></div>
+<div class="card"><img src="OVEROL TATIANA GRIS.png"><h3>OVEROL TATIANA GRIS</h3></div>
+<div class="card"><img src="OVEROL TATIANA MARRON.png"><h3>OVEROL TATIANA MARRON</h3></div>
+<div class="card"><img src="OVEROL TATIANA BEIGE.png"><h3>OVEROL TATIANA BEIGE</h3></div>
+
+<div class="card"><img src="PANTALON CARGO.png"><h3>PANTALON CARGO</h3></div>
+<div class="card"><img src="PANTALON LAZO.png"><h3>PANTALON LAZO</h3></div>
+<div class="card"><img src="PANTALON YAQUI.png"><h3>PANTALON YAQUI</h3></div>
+<div class="card"><img src="PANTALON YENI.png"><h3>PANTALON YENI</h3></div>
+
+<div class="card"><img src="PARCA PELUCHE.png"><h3>PARCA PELUCHE</h3></div>
+
+<div class="card"><img src="SHORT COLOR.png"><h3>SHORT COLOR</h3></div>
+<div class="card"><img src="SHORT COLOR (2).png"><h3>SHORT COLOR 2</h3></div>
+<div class="card"><img src="SHORT LAZO.png"><h3>SHORT LAZO</h3></div>
+<div class="card"><img src="SHORT YAQUI.png"><h3>SHORT YAQUI</h3></div>
+
+<div class="card"><img src="VESTIDO BETY.png"><h3>VESTIDO BETY</h3></div>
+<div class="card"><img src="VESTIDO DALIA.png"><h3>VESTIDO DALIA</h3></div>
+<div class="card"><img src="VESTIDO FABIOLA.png"><h3>VESTIDO FABIOLA</h3></div>
+<div class="card"><img src="VESTIDO FERNANDA.png"><h3>VESTIDO FERNANDA</h3></div>
+<div class="card"><img src="VESTIDO HAIDE.png"><h3>VESTIDO HAIDE</h3></div>
+<div class="card"><img src="VESTIDO IRIS.png"><h3>VESTIDO IRIS</h3></div>
+<div class="card"><img src="VESTIDO LUCIA.png"><h3>VESTIDO LUCIA</h3></div>
+<div class="card"><img src="VESTIDO PAMELA.png"><h3>VESTIDO PAMELA</h3></div>
+<div class="card"><img src="VESTIDO PAOLA.png"><h3>VESTIDO PAOLA</h3></div>
+<div class="card"><img src="VESTIDO ROXANA.png"><h3>VESTIDO ROXANA</h3></div>
+<div class="card"><img src="VESTIDO SARA.png"><h3>VESTIDO SARA</h3></div>
+<div class="card"><img src="VESTIDO SOFIA.png"><h3>VESTIDO SOFIA</h3></div>
+
 </div>
 
 <script>
-function abrirProducto(nombre, precio, adelanto, imgPrincipal, extras=[]) {
-  document.getElementById("modal").style.display = "flex";
-  document.getElementById("modalImg").src = imgPrincipal;
-  document.getElementById("modalNombre").innerText = nombre;
-  document.getElementById("modalPrecio").innerText = "Precio: " + precio;
-  document.getElementById("modalAdelanto").innerText = "Adelanto: " + adelanto;
-
-  let mensaje = `Hola, quiero este producto:\n${nombre}\nPrecio: ${precio}\nAdelanto: ${adelanto}`;
-  let numero = "50688888888";
-  document.getElementById("btnWhatsApp").href = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
-
-  let contenedor = document.getElementById("extraImgs");
-  contenedor.innerHTML = "";
-  extras.forEach(img=>{
-    contenedor.innerHTML += `<img src="${img}" style="width:60px;margin:5px;cursor:pointer;" onclick="document.getElementById('modalImg').src='${img}'">`;
-  });
-}
-
-function cerrarModal(){
-  document.getElementById("modal").style.display = "none";
+function cambiar(id, img){
+  document.getElementById(id).src = img.src;
 }
 </script>
 
