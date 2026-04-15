@@ -20,8 +20,8 @@ h1 {
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
 }
 
 .card {
@@ -33,9 +33,8 @@ h1 {
 
 .card img {
     width: 100%;
-    height: 260px;
+    height: 200px;
     object-fit: contain;
-    background: #fff;
     border-radius: 10px;
 }
 
@@ -98,21 +97,28 @@ function volver(){
 
 <div id="catalogo" class="grid">
 
-<!-- PRODUCTO EJEMPLO -->
-
 <div class="card">
     <img src="CAPUCHA MUJER (1).jpg">
     <div class="nombre">CAPUCHA MUJER</div>
     <div class="btn" onclick="verProducto('p1')">Ver detalles</div>
 </div>
 
+<div class="card">
+    <img src="CASACA CROP (1).jpg">
+    <div class="nombre">CASACA CROP</div>
+    <div class="btn" onclick="verProducto('p2')">Ver detalles</div>
 </div>
 
+<div class="card">
+    <img src="CHALECO HOMBRE (1).jpg">
+    <div class="nombre">CHALECO HOMBRE</div>
+    <div class="btn" onclick="verProducto('p3')">Ver detalles</div>
+</div>
 
-<!-- DETALLE PRODUCTO -->
+</div>
 
+<!-- DETALLE 1 -->
 <div id="p1" class="detalle">
-
 <div class="volver" onclick="volver()">← Volver</div>
 
 <h2>CAPUCHA MUJER</h2>
@@ -128,6 +134,48 @@ function volver(){
 <img src="CAPUCHA MUJER (3).jpg" width="100%">
 <img src="CAPUCHA MUJER (4).jpg" width="100%">
 <img src="CAPUCHA MUJER (5).jpg" width="100%">
+
+</div>
+
+<!-- DETALLE 2 -->
+<div id="p2" class="detalle">
+<div class="volver" onclick="volver()">← Volver</div>
+
+<h2>CASACA CROP</h2>
+
+<div class="info">
+    <div>Tallas: S M L</div>
+    <div>Precio: ₡XXXX</div>
+    <div>Adelanto: ₡XXXX</div>
+</div>
+
+<img src="CASACA CROP (1).jpg" width="100%">
+<img src="CASACA CROP (2).jpg" width="100%">
+<img src="CASACA CROP (3).jpg" width="100%">
+<img src="CASACA CROP (4).jpg" width="100%">
+<img src="CASACA CROP (5).jpg" width="100%">
+<img src="CASACA CROP (6).jpg" width="100%">
+<img src="CASACA CROP (7).jpg" width="100%">
+
+</div>
+
+<!-- DETALLE 3 -->
+<div id="p3" class="detalle">
+<div class="volver" onclick="volver()">← Volver</div>
+
+<h2>CHALECO HOMBRE</h2>
+
+<div class="info">
+    <div>Tallas: S M L</div>
+    <div>Precio: ₡XXXX</div>
+    <div>Adelanto: ₡XXXX</div>
+</div>
+
+<img src="CHALECO HOMBRE (1).jpg" width="100%">
+<img src="CHALECO HOMBRE (2).jpg" width="100%">
+<img src="CHALECO HOMBRE (3).jpg" width="100%">
+<img src="CHALECO HOMBRE (4).jpg" width="100%">
+<img src="CHALECO HOMBRE (5).jpg" width="100%">
 
 </div>
 
