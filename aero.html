@@ -131,7 +131,23 @@ function volver(){
     detalles.forEach(d => d.style.display = "none");
     window.scrollTo(0,0);
 }
+let currentId = null;
 
+function siguiente(){
+    let productos = Array.from(document.querySelectorAll(".detalle"));
+    let index = productos.findIndex(p => p.id === currentId);
+    if(productos[index + 1]){
+        verProducto(productos[index + 1].id);
+    }
+}
+
+function anterior(){
+    let productos = Array.from(document.querySelectorAll(".detalle"));
+    let index = productos.findIndex(p => p.id === currentId);
+    if(productos[index - 1]){
+        verProducto(productos[index - 1].id);
+    }
+}
 function siguienteProducto(actualId){
     let productos = Array.from(document.querySelectorAll(".detalle"));
     let index = productos.findIndex(p => p.id === actualId);
