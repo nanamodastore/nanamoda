@@ -216,7 +216,58 @@ function volver(){
 
     <img src="CHAQUETA PARKA DE MEZCLILLA (1).png" width="100%">
 </div>
+<script>
+const URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRDwwXbsHVrfPnUYNDVP4KKkKTI4oEUEzxZtEVHblAgyZ-5kQ6noaH9C9rzt0KM7txP1-VAr0RnL3fY/pub?output=csv";
 
+fetch(URL)
+  .then(res => res.text())
+  .then(data => {
+    const filas = data.split("\n").slice(1);
+    const contenedor = document.getElementById("catalogo");
+
+    filas.forEach(fila => {
+      const cols = fila.split(",");
+
+      const nombre = cols[1];
+      const tallas = cols[2];
+      const precio = cols[3];
+      const adelanto = cols[4];
+      const imagenes = cols[9];
+
+      if (!nombre) return;
+
+      const primeraImg = imagenes.split(",")[0];
+
+      const card = document.createElement("div");
+      card.className = "card";
+
+      card.innerHTML = `
+        <img src="${primeraImg}">
+        <div class="nombre">${nombre}</div>
+        <div class="btn" onclick="verDetalle('${nombre}','${precio}','${adelanto}','${imagenes}')">
+          Ver detalles
+        </div>
+      `;
+
+      contenedor.appendChild(card);
+    });
+  });
+
+function verDetalle(nombre, precio, adelanto, imagenes) {
+  document.getElementById("catalogo").style.display = "none";
+  document.getElementById("detalle").style.display = "block";
+
+  const imgs = imagenes.split(",");
+
+  document.getElementById("imgDetalle").src = imgs[0];
+
+  document.getElementById("infoDetalle").innerHTML = `
+    <h2>${nombre}</h2>
+    <h1>₡${precio}</h1>
+    <h3>Adelanto: ₡${adelanto}</h3>
+  `;
+}
+</script>
 </body>
 </html>
 
