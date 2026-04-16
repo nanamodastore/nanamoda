@@ -18,15 +18,12 @@ h1 {
 /* GRID */
 .grid {
   display: grid;
-  /* MOBILE (2 columnas) */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, 1fr); /* SIEMPRE mínimo 2 */
   gap: 15px;
   padding: 15px;
 }
 
-/* PC (máximo 3 columnas) */
+/* PC 3 columnas */
 @media (min-width: 768px) {
   .grid {
     grid-template-columns: repeat(3, 1fr);
@@ -49,34 +46,38 @@ h1 {
   border-radius: 10px;
 }
 
-/* BOTÓN */
+/* BOTÓN GRANDE */
 button {
-  margin-top: 10px;
-  padding: 10px 15px;
-  border-radius: 20px;
+  margin-top: 15px;
+  padding: 14px 22px;
+  border-radius: 25px;
   border: none;
   background: black;
   color: white;
+  font-size: 16px;
+  font-weight: bold;
   cursor: pointer;
 }
 
 /* DETALLE */
-.detalle {
+#detalle {
   display: none;
   padding: 20px;
+  text-align: center;
 }
 
-.detalle img {
+/* PRECIO GRANDE CENTRADO */
+.info-precio {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 20px 0;
+}
+
+#imgDetalle {
   width: 100%;
   max-width: 500px;
   display: block;
   margin: auto;
-}
-
-.precio {
-  text-align: center;
-  font-weight: bold;
-  margin-bottom: 15px;
 }
 </style>
 </head>
@@ -89,7 +90,6 @@ button {
 
 <div id="catalogo" class="grid">
 
-<!-- ANDREA (ARREGLADO) -->
 <div class="card" onclick="verProducto('p1')">
   <img src="BLAZER ANDREA (1).png">
   <button>Ver detalles</button>
@@ -100,7 +100,6 @@ button {
   <button>Ver detalles</button>
 </div>
 
-<!-- RESTO -->
 <div class="card" onclick="verProducto('p3')">
   <img src="BLAZER SAMANTA.png">
   <button>Ver detalles</button>
@@ -139,23 +138,21 @@ button {
 </div>
 
 <!-- DETALLE -->
-<div id="detalle" class="detalle">
+<div id="detalle">
+
   <button onclick="volver()">← Volver</button>
 
-  <div class="precio">
-    Precio: ₡16,500<br>
-    Adelanto: ₡10,000
+  <div class="info-precio">
+    Precio: <span id="precio"></span><br>
+    Adelanto: <span id="adelanto"></span>
   </div>
 
   <img id="imgDetalle">
+
 </div>
 
 <script>
-function verProducto(id) {
-  document.getElementById("catalogo").style.display = "none";
-  document.getElementById("detalle").style.display = "block";
-
- const productos = {
+const productos = {
   p1: { img: "BLAZER ANDREA (1).png", precio: "₡16,500", adelanto: "₡10,000" },
   p2: { img: "BLAZER ANDREA (2).png", precio: "₡16,500", adelanto: "₡10,000" },
   p3: { img: "BLAZER SAMANTA.png", precio: "₡16,500", adelanto: "₡10,000" },
@@ -167,11 +164,15 @@ function verProducto(id) {
   p9: { img: "BLUSA IVON.png", precio: "₡14,500", adelanto: "₡8,500" }
 };
 
+function verProducto(id) {
+  document.getElementById("catalogo").style.display = "none";
+  document.getElementById("detalle").style.display = "block";
+
   const p = productos[id];
 
-document.getElementById("imgDetalle").src = p.img;
-document.getElementById("precio").innerText = p.precio;
-document.getElementById("adelanto").innerText = p.adelanto;
+  document.getElementById("imgDetalle").src = p.img;
+  document.getElementById("precio").innerText = p.precio;
+  document.getElementById("adelanto").innerText = p.adelanto;
 }
 
 function volver() {
