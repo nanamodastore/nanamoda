@@ -155,7 +155,11 @@ function verProducto(id) {
   p9: { img: "BLUSA IVON.png", precio: "₡14,500", adelanto: "₡8,500" }
 };
 
-  document.getElementById("imgDetalle").src = imagenes[id];
+  const p = productos[id];
+
+document.getElementById("imgDetalle").src = p.img;
+document.getElementById("precio").innerText = p.precio;
+document.getElementById("adelanto").innerText = p.adelanto;
 }
 
 function volver() {
