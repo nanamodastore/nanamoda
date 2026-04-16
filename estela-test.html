@@ -2,37 +2,39 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Test</title>
+<title>Catálogo Estela</title>
 <style>
-body{font-family:Arial}
+body{font-family:Arial;background:#f5f5f5;margin:0;padding:20px}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
-.card{padding:10px;border:1px solid #ccc;text-align:center}
-img{width:100%;height:250px;object-fit:cover}
-.btn{background:black;color:white;padding:10px;margin-top:10px;cursor:pointer}
+.card{background:white;padding:10px;border-radius:10px;text-align:center}
+img{width:100%;height:250px;object-fit:cover;border-radius:8px}
+.btn{background:black;color:white;padding:12px;margin-top:10px;cursor:pointer;border-radius:20px}
+.detalle{display:none;text-align:center}
 </style>
 </head>
 <body>
 
 <div id="catalogo" class="grid">
 
-    <div class="card">
-        <img src="/img/BLUSA DENIM JEANS (1).jpg">
-        <h3>BLUSA DENIM  JEANS</h3>
-        <div class="btn" onclick="ver('BLUSA DENIM  JEANS','14500','8500','BLUSA DENIM JEANS (1).jpg')">Ver detalles</div>
-    </div>
-    
-    <div class="card">
-        <img src="/img/CHAQUETA PARKA DE MEZCLILLA (1).jpg">
-        <h3>CHAQUETA PARKA  DE MEZCLILLA</h3>
-        <div class="btn" onclick="ver('CHAQUETA PARKA  DE MEZCLILLA','20900','13500','CHAQUETA PARKA DE MEZCLILLA (1).jpg')">Ver detalles</div>
-    </div>
-    
+<div class="card">
+<img src="/img/BLUSA%20DENIM%20JEANS%20(1).jpg">
+<h3>BLUSA DENIM JEANS</h3>
+<div class="btn" onclick="ver('BLUSA DENIM JEANS','14500','8500','BLUSA DENIM JEANS (1).jpg')">Ver detalles</div>
 </div>
 
-<div id="detalle" style="display:none;text-align:center">
+<div class="card">
+<img src="/img/CHAQUETA%20PARCA%20DE%20MEZCLILLA%20(1).jpg">
+<h3>CHAQUETA PARCA DE MEZCLILLA</h3>
+<div class="btn" onclick="ver('CHAQUETA PARCA DE MEZCLILLA','20900','13000','CHAQUETA PARCA DE MEZCLILLA (1).jpg')">Ver detalles</div>
+</div>
+
+</div>
+
+<div id="detalle" class="detalle">
 <h2 id="nombre"></h2>
-<div id="info"></div>
-<img id="img" style="width:300px">
+<h1 id="precio"></h1>
+<h3 id="adelanto"></h3>
+<img id="imgDetalle" style="width:300px;margin-top:20px">
 <br><br>
 <button onclick="volver()">Volver</button>
 </div>
@@ -42,8 +44,9 @@ function ver(n,p,a,i){
 document.getElementById('catalogo').style.display='none';
 document.getElementById('detalle').style.display='block';
 document.getElementById('nombre').innerText=n;
-document.getElementById('info').innerText='₡'+p+' | Adelanto ₡'+a;
-document.getElementById('img').src='/img/'+i;
+document.getElementById('precio').innerText='₡'+p;
+document.getElementById('adelanto').innerText='Adelanto ₡'+a;
+document.getElementById('imgDetalle').src='/img/'+encodeURIComponent(i);
 }
 
 function volver(){
@@ -54,3 +57,4 @@ document.getElementById('detalle').style.display='none';
 
 </body>
 </html>
+
