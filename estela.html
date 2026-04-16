@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -6,269 +7,91 @@
 <title>Catálogo Estela</title>
 
 <style>
-body {
-    font-family: Arial, sans-serif;
-    background: #f4f4f4;
-    margin: 0;
-    padding: 20px;
-    padding-top: 70px;
-}
-
-h1 {
-    margin-bottom: 20px;
-}
-
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px;
-}
-
-.card {
-    background: #fff;
-    border-radius: 15px;
-    padding: 10px;
-    text-align: center;
-}
-
-.card img {
-    width: 100%;
-    height: 250px;
-    object-fit: contain;
-    background: #fff;
-    border-radius: 10px;
-}
-
-.nombre {
-    font-weight: bold;
-    margin: 10px 0;
-}
-
-.btn {
-    background: black;
-    color: white;
-    padding: 8px 12px;
-    border-radius: 15px;
-    cursor: pointer;
-    display: inline-block;
-}
-
-.detalle {
-    display: none;
-}
-
-.volver {
-    position: fixed;
-    top: 15px;
-    left: 15px;
-    background: black;
-    color: white;
-    padding: 10px 15px;
-    border-radius: 20px;
-    cursor: pointer;
-    z-index: 999;
-}
-
-.info {
-    text-align: center;
-    margin-bottom: 20px;
-}
+body {font-family: Arial; background:#f4f4f4; margin:0; padding:20px;}
+.grid {display:grid; grid-template-columns:repeat(2,1fr); gap:20px;}
+@media(min-width:768px){.grid{grid-template-columns:repeat(3,1fr);}}
+.card{background:#fff; border-radius:15px; padding:10px; text-align:center;}
+.card img{width:100%; height:250px; object-fit:contain;}
+.btn{background:black; color:white; padding:12px 18px; border-radius:20px; cursor:pointer;}
+.detalle{display:none; text-align:center;}
+.detalle img{width:100%; max-width:500px; margin:10px auto; display:block;}
+.info h1{font-size:28px;}
 </style>
-
-<script>
-function verProducto(id){
-    document.getElementById("catalogo").style.display = "none";
-    document.getElementById(id).style.display = "block";
-
-    window.scrollTo(0, 0); // 🔥 arregla apertura arriba
-}
-
-function volver(){
-    document.getElementById("catalogo").style.display = "grid";
-
-    let detalles = document.querySelectorAll(".detalle");
-    detalles.forEach(d => d.style.display = "none");
-
-    window.scrollTo(0, 0); // 🔥 vuelve arriba al catálogo
-}
-</script>
 
 </head>
 <body>
 
 <h1>Catálogo Estela</h1>
 
-<!-- CATALOGO -->
-<div id="catalogo" class="grid">
+<div id="catalogo" class="grid"></div>
 
-    <div class="card">
-        <img src="BLUSA DENIM JEANS (1).png">
-        <div class="nombre">BLUSA DENIM JEANS</div>
-        <div class="btn" onclick="verProducto('p1')">Ver detalles</div>
-    </div>
-
-    <div class="card">
-        <img src="CARNERO JEANS (1).png">
-        <div class="nombre">CARNERO JEANS STRETCH</div>
-        <div class="btn" onclick="verProducto('p2')">Ver detalles</div>
-    </div>
-
-    <div class="card">
-        <img src="CHAQUETA CLASICA (1).png">
-        <div class="nombre">CHAQUETA CLASICA JEANS</div>
-        <div class="btn" onclick="verProducto('p3')">Ver detalles</div>
-    </div>
-
-    <div class="card">
-        <img src="PARKA DE COLORES (1).png">
-        <div class="nombre">PARKA DE COLORES</div>
-        <div class="btn" onclick="verProducto('p4')">Ver detalles</div>
-    </div>
-
-    <div class="card">
-        <img src="CHAQUETA PARKA DE MEZCLILLA (1).png">
-        <div class="nombre">CHAQUETA PARKA DE MEZCLILLA</div>
-        <div class="btn" onclick="verProducto('p5')">Ver detalles</div>
-    </div>
-
+<div id="detalle" class="detalle">
+<button onclick="volver()">Volver</button>
+<div id="infoDetalle"></div>
+<div id="imagenesDetalle"></div>
 </div>
 
-<!-- DETALLES -->
-
-<div id="p1" class="detalle">
-    <div class="volver" onclick="volver()">← Volver</div>
-    <h2>BLUSA DENIM JEANS</h2>
-
-    <div class="info">
-        <div>Tallas: S M L XL</div>
-        <div>Precio: ₡14,500</div>
-        <div>Adelanto: ₡8,500</div>
-    </div>
-
-    <img src="BLUSA DENIM JEANS (1).png" width="100%">
-    <img src="BLUSA DENIM JEANS (2).png" width="100%">
-    <img src="BLUSA DENIM JEANS (3).png" width="100%">
-    <img src="BLUSA DENIM JEANS (4).png" width="100%">
-    <img src="BLUSA DENIM JEANS (5).png" width="100%">
-</div>
-
-<div id="p2" class="detalle">
-    <div class="volver" onclick="volver()">← Volver</div>
-    <h2>CARNERO JEANS STRETCH</h2>
-
-    <div class="info">
-        <div>Tallas: S M L</div>
-        <div>Precio: ₡17,900</div>
-        <div>Adelanto: ₡11,000</div>
-    </div>
-
-<img src="CARNERO JEANS (1).png" width="100%">
-<img src="CARNERO JEANS (2).png" width="100%">
-<img src="CARNERO JEANS (3).png" width="100%">
-<img src="CARNERO JEANS (4).png" width="100%">
-<img src="CARNERO JEANS (5).png" width="100%">
-<img src="CARNERO JEANS (6).png" width="100%">
-<img src="CARNERO JEANS (7).png" width="100%">
-<img src="CARNERO JEANS (8).png" width="100%">
-<img src="CARNERO JEANS (9).png" width="100%">
-<img src="CARNERO JEANS (10).png" width="100%">
-</div>
-
-<div id="p3" class="detalle">
-    <div class="volver" onclick="volver()">← Volver</div>
-    <h2>CHAQUETA CLASICA JEANS</h2>
-
-    <div class="info">
-        <div>Tallas: 28 30 32 34</div>
-        <div>Precio: ₡17,500</div>
-        <div>Adelanto: ₡11,000</div>
-    </div>
-
-    <img src="CHAQUETA CLASICA (1).png" width="100%">
-    <img src="CHAQUETA CLASICA (2).png" width="100%">
-    <img src="CHAQUETA CLASICA (3).png" width="100%">
-</div>
-
-<div id="p4" class="detalle">
-    <div class="volver" onclick="volver()">← Volver</div>
-    <h2>PARKA DE COLORES</h2>
-
-    <div class="info">
-        <div>Tallas: S M L</div>
-        <div>Precio: ₡19,900</div>
-        <div>Adelanto: ₡12,000</div>
-    </div>
-
-    <img src="PARKA DE COLORES (1).png" width="100%">
-    <img src="PARKA DE COLORES (2).png" width="100%">
-    <img src="PARKA DE COLORES (3).png" width="100%">
-</div>
-
-<div id="p5" class="detalle">
-    <div class="volver" onclick="volver()">← Volver</div>
-    <h2>CHAQUETA PARKA DE MEZCLILLA</h2>
-
-    <div class="info">
-        <div>Tallas: S M L</div>
-        <div>Precio: ₡20,900</div>
-        <div>Adelanto: ₡13,500</div>
-    </div>
-
-    <img src="CHAQUETA PARKA DE MEZCLILLA (1).png" width="100%">
-</div>
 <script>
 const URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRDwwXbsHVrfPnUYNDVP4KKkKTI4oEUEzxZtEVHblAgyZ-5kQ6noaH9C9rzt0KM7txP1-VAr0RnL3fY/pub?output=csv";
 
 fetch(URL)
-  .then(res => res.text())
-  .then(data => {
-    const filas = data.split("\n").slice(1);
-    const contenedor = document.getElementById("catalogo");
+.then(res=>res.text())
+.then(data=>{
+const filas=data.split("\n").slice(1);
+const cont=document.getElementById("catalogo");
 
-    filas.forEach(fila => {
-      const cols = fila.split(",");
+filas.forEach(f=>{
+const cols=f.split(",");
 
-      const nombre = cols[1];
-      const tallas = cols[2];
-      const precio = cols[3];
-      const adelanto = cols[4];
-      const imagenes = cols[9];
+const nombre=cols[1];
+const tallas=cols[2];
+const precio=cols[3];
+const adelanto=cols[4];
+const imagenes=cols.slice(9).join(",");
 
-      if (!nombre) return;
+if(!nombre)return;
 
-      const primeraImg = imagenes.split(",")[0];
+const primera=imagenes.split(",")[0];
 
-      const card = document.createElement("div");
-      card.className = "card";
+const card=document.createElement("div");
+card.className="card";
 
-      card.innerHTML = `
-        <img src="${primeraImg}">
-        <div class="nombre">${nombre}</div>
-        <div class="btn" onclick="verDetalle('${nombre}','${precio}','${adelanto}','${imagenes}')">
-          Ver detalles
-        </div>
-      `;
+card.innerHTML=`
+<img src="${primera}">
+<div>${nombre}</div>
+<div class="btn" onclick="verDetalle('${nombre}','${precio}','${adelanto}','${imagenes}')">Ver detalles</div>
+`;
 
-      contenedor.appendChild(card);
-    });
-  });
+cont.appendChild(card);
+});
+});
 
-function verDetalle(nombre, precio, adelanto, imagenes) {
-  document.getElementById("catalogo").style.display = "none";
-  document.getElementById("detalle").style.display = "block";
+function verDetalle(nombre,precio,adelanto,imagenes){
+document.getElementById("catalogo").style.display="none";
+document.getElementById("detalle").style.display="block";
 
-  const imgs = imagenes.split(",");
+document.getElementById("infoDetalle").innerHTML=`
+<h2>${nombre}</h2>
+<h1>₡${precio}</h1>
+<h3>Adelanto: ₡${adelanto}</h3>
+`;
 
-  document.getElementById("imgDetalle").src = imgs[0];
+const cont=document.getElementById("imagenesDetalle");
+cont.innerHTML="";
 
-  document.getElementById("infoDetalle").innerHTML = `
-    <h2>${nombre}</h2>
-    <h1>₡${precio}</h1>
-    <h3>Adelanto: ₡${adelanto}</h3>
-  `;
+imagenes.split(",").forEach(img=>{
+const i=document.createElement("img");
+i.src=img.trim();
+cont.appendChild(i);
+});
+}
+
+function volver(){
+document.getElementById("catalogo").style.display="grid";
+document.getElementById("detalle").style.display="none";
 }
 </script>
+
 </body>
 </html>
-
 
