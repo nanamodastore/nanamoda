@@ -6,64 +6,63 @@
 <title>Catálogo Estela</title>
 
 <style>
-body{font-family:Arial;background:#f5f5f5;margin:0;padding:20px;}
-h1{margin-bottom:20px;}
-
-.grid{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:20px;
+body {
+  font-family: Arial;
+  background: #f5f5f5;
+  margin: 0;
 }
 
-@media(max-width:768px){
-.grid{
-grid-template-columns:repeat(2,1fr);
-}
+h1 {
+  padding: 20px;
 }
 
-.card{
-background:#fff;
-padding:15px;
-border-radius:12px;
-text-align:center;
-box-shadow:0 2px 8px rgba(0,0,0,0.1);
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
 }
 
-.card img{
-width:100%;
-height:250px;
-object-fit:cover;
-border-radius:10px;
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
-.nombre{
-margin:10px 0;
-font-weight:bold;
+.card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 8px;
 }
 
-.btn{
-background:#000;
-color:#fff;
-padding:16px;
-border-radius:25px;
-cursor:pointer;
-font-size:18px;
+.btn {
+  background: black;
+  color: white;
+  padding: 12px;
+  margin-top: 10px;
+  border-radius: 30px;
+  cursor: pointer;
+  display: block;
 }
 
-#detalle{
-display:none;
-text-align:center;
+#detalle {
+  display: none;
+  padding: 20px;
+  text-align: center;
 }
 
-#detalle img{
-width:90%;
-max-width:400px;
-margin-bottom:20px;
+#detalle img {
+  width: 100%;
+  max-width: 400px;
 }
 
-.info{
-font-size:24px;
-font-weight:bold;
+.info {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 </style>
 </head>
@@ -75,73 +74,74 @@ font-weight:bold;
 <div id="catalogo" class="grid"></div>
 
 <div id="detalle">
-<button onclick="volver()">⬅ Volver</button>
-<br><br>
-<img id="imgDetalle">
-<div class="info" id="infoDetalle"></div>
+  <div class="info" id="infoDetalle"></div>
+  <img id="imgDetalle">
+  <br><br>
+  <div class="btn" onclick="volver()">← Volver</div>
 </div>
 
 <script>
-fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vRDwwXbsHVrfPnUYNDVP4KKkKTI4oEUEzxZtEVHblAgyZ-5kQ6noaH9C9rzt0KM7txP1-VAr0RnL3fY/pub?output=csv")
-.then(res=>res.text())
-.then(data=>{
-let filas=data.split("\n").slice(1);
 
-filas.forEach(fila=>{
-let col=fila.split(",");
-if(col.length < 9) return;
+fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vSiWn8R9vUAlgIezd5vzPUXlM19e4BDxhc2UtNpN4BBJZibxnBUTScQLNuU0yNjD1Qwob2U3WO6HYgM/pub?output=csv")
+.then(res => res.text())
+.then(data => {
 
-let nombre=col[1]?.trim();
-let precio=col[3]?.trim();
-let adelanto=col[4]?.trim();
-let imagenes=col[8]?.trim();
+  const filas = data.split("\n").slice(1);
 
-if(!nombre || nombre.toLowerCase()==="descripcion") return;
+  const contenedor = document.getElementById("catalogo");
 
-imagenes = imagenes.replace(/"/g,"").trim();
+  filas.forEach(fila => {
 
-let lista = imagenes.split(",").map(i=>i.trim()).filter(i=>i!=="");
-if(lista.length===0) return;
+    if(!fila.trim()) return;
 
-let primera = lista[0];
+    const cols = fila.split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
 
-let card=document.createElement("div");
-card.className="card";
+    const nombre = cols[1]?.trim();
+    const precio = cols[3]?.trim();
+    const adelanto = cols[4]?.trim();
+    let imagenes = cols[9]?.trim();
 
-card.innerHTML=`
-<img src="img/${primera}">
-<div class="nombre">${nombre}</div>
-<div class="btn" onclick="verDetalle('${nombre}','${precio}','${adelanto}','${imagenes}')">Ver detalles</div>
-`;
+    if(!imagenes) return;
 
-document.getElementById("catalogo").appendChild(card);
+    imagenes = imagenes.replace(/^"|"$/g, "");
+    const imgs = imagenes.split(",");
+
+    const primera = "/img/" + imgs[0].trim();
+
+    const card = document.createElement("div");
+    card.className = "card";
+
+    card.innerHTML = `
+      <img src="${primera}">
+      <div><b>${nombre}</b></div>
+      <div class="btn" onclick="verDetalle('${nombre}','${precio}','${adelanto}','${imagenes}')">
+        Ver detalles
+      </div>
+    `;
+
+    contenedor.appendChild(card);
+
+  });
+
 });
-});
 
-function verDetalle(nombre,precio,adelanto,imagenes){
-document.getElementById("catalogo").style.display="none";
-document.getElementById("detalle").style.display="block";
+function verDetalle(nombre, precio, adelanto, imagenes){
+  document.getElementById("catalogo").style.display = "none";
+  document.getElementById("detalle").style.display = "block";
 
-imagenes = imagenes.replace(/"/g,"").trim();
-let lista = imagenes.split(",").map(i=>i.trim());
+  const imgs = imagenes.split(",");
+  document.getElementById("imgDetalle").src = "/img/" + imgs[0].trim();
 
-let img = lista[0];
-
-document.getElementById("imgDetalle").src="img/"+img;
-
-document.getElementById("infoDetalle").innerHTML=`
-${nombre}<br>
-Precio: ₡${precio}<br>
-Adelanto: ₡${adelanto}
-`;
+  document.getElementById("infoDetalle").innerHTML =
+    nombre + "<br>₡" + precio + "<br>Adelanto ₡" + adelanto;
 }
 
 function volver(){
-document.getElementById("catalogo").style.display="grid";
-document.getElementById("detalle").style.display="none";
+  document.getElementById("catalogo").style.display = "grid";
+  document.getElementById("detalle").style.display = "none";
 }
+
 </script>
 
 </body>
 </html>
-
