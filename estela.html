@@ -1,65 +1,120 @@
-
+<!DOCTYPE html>
+<html lang="es">
+<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Catálogo Estela</title>
 
 <style>
-body {font-family: Arial; background:#f4f4f4; margin:0; padding:20px;}
-.grid {display:grid; grid-template-columns:repeat(2,1fr); gap:20px;}
-@media(min-width:768px){.grid{grid-template-columns:repeat(3,1fr);}}
-.card{background:#fff; border-radius:15px; padding:10px; text-align:center;}
-.card img{width:100%; height:250px; object-fit:contain;}
-.btn{background:black; color:white; padding:12px 18px; border-radius:20px; cursor:pointer;}
-.detalle{display:none; text-align:center;}
-.detalle img{width:100%; max-width:500px; margin:10px auto; display:block;}
-.info h1{font-size:28px;}
-</style>
+body{font-family:Arial;background:#f5f5f5;margin:0;padding:20px;}
+h1{margin-bottom:20px;}
 
+.grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:20px;
+}
+
+@media(max-width:768px){
+.grid{
+grid-template-columns:repeat(2,1fr);
+}
+}
+
+.card{
+background:#fff;
+padding:15px;
+border-radius:12px;
+text-align:center;
+box-shadow:0 2px 8px rgba(0,0,0,0.1);
+}
+
+.card img{
+width:100%;
+height:250px;
+object-fit:cover;
+border-radius:10px;
+}
+
+.nombre{
+margin:10px 0;
+font-weight:bold;
+}
+
+.btn{
+background:#000;
+color:#fff;
+padding:16px;
+border-radius:25px;
+cursor:pointer;
+font-size:18px;
+}
+
+#detalle{
+display:none;
+text-align:center;
+}
+
+#detalle img{
+width:90%;
+max-width:400px;
+margin-bottom:20px;
+}
+
+.info{
+font-size:24px;
+font-weight:bold;
+}
+</style>
 </head>
+
 <body>
 
 <h1>Catálogo Estela</h1>
 
 <div id="catalogo" class="grid"></div>
 
-<div id="detalle" class="detalle">
-<button onclick="volver()">Volver</button>
-<div id="infoDetalle"></div>
-<div id="imagenesDetalle"></div>
+<div id="detalle">
+<button onclick="volver()">⬅ Volver</button>
+<br><br>
+<img id="imgDetalle">
+<div class="info" id="infoDetalle"></div>
 </div>
 
 <script>
-const URL = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRDwwXbsHVrfPnUYNDVP4KKkKTI4oEUEzxZtEVHblAgyZ-5kQ6noaH9C9rzt0KM7txP1-VAr0RnL3fY/pub?output=csv";
-
-fetch(URL)
+fetch("https://docs.google.com/spreadsheets/d/e/2PACX-1vRDwwXbsHVrfPnUYNDVP4KKkKTI4oEUEzxZtEVHblAgyZ-5kQ6noaH9C9rzt0KM7txP1-VAr0RnL3fY/pub?output=csv")
 .then(res=>res.text())
 .then(data=>{
-const filas=data.split("\n").slice(1);
-const cont=document.getElementById("catalogo");
+let filas=data.split("\n").slice(1);
 
-filas.forEach(f=>{
-const cols=f.split(",");
+filas.forEach(fila=>{
+let col=fila.split(",");
+if(col.length < 9) return;
 
-const nombre=cols[1];
-const tallas=cols[2];
-const precio=cols[3];
-const adelanto=cols[4];
-const imagenes=cols.slice(9).join(",");
+let nombre=col[1]?.trim();
+let precio=col[3]?.trim();
+let adelanto=col[4]?.trim();
+let imagenes=col[8]?.trim();
 
-if(!nombre)return;
+if(!nombre || nombre.toLowerCase()==="descripcion") return;
 
-const primera=imagenes.split(",")[0];
+imagenes = imagenes.replace(/"/g,"").trim();
 
-const card=document.createElement("div");
+let lista = imagenes.split(",").map(i=>i.trim()).filter(i=>i!=="");
+if(lista.length===0) return;
+
+let primera = lista[0];
+
+let card=document.createElement("div");
 card.className="card";
 
 card.innerHTML=`
-<img src="${primera}">
-<div>${nombre}</div>
+<img src="img/${primera}">
+<div class="nombre">${nombre}</div>
 <div class="btn" onclick="verDetalle('${nombre}','${precio}','${adelanto}','${imagenes}')">Ver detalles</div>
 `;
 
-cont.appendChild(card);
+document.getElementById("catalogo").appendChild(card);
 });
 });
 
@@ -67,20 +122,18 @@ function verDetalle(nombre,precio,adelanto,imagenes){
 document.getElementById("catalogo").style.display="none";
 document.getElementById("detalle").style.display="block";
 
+imagenes = imagenes.replace(/"/g,"").trim();
+let lista = imagenes.split(",").map(i=>i.trim());
+
+let img = lista[0];
+
+document.getElementById("imgDetalle").src="img/"+img;
+
 document.getElementById("infoDetalle").innerHTML=`
-<h2>${nombre}</h2>
-<h1>₡${precio}</h1>
-<h3>Adelanto: ₡${adelanto}</h3>
+${nombre}<br>
+Precio: ₡${precio}<br>
+Adelanto: ₡${adelanto}
 `;
-
-const cont=document.getElementById("imagenesDetalle");
-cont.innerHTML="";
-
-imagenes.split(",").forEach(img=>{
-const i=document.createElement("img");
-i.src=img.trim();
-cont.appendChild(i);
-});
 }
 
 function volver(){
