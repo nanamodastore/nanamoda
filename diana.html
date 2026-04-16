@@ -143,17 +143,17 @@ function verProducto(id) {
   document.getElementById("catalogo").style.display = "none";
   document.getElementById("detalle").style.display = "block";
 
-  const imagenes = {
-    p1: "BLAZER ANDREA (1).png",
-    p2: "BLAZER ANDREA (2).png",
-    p3: "BLAZER SAMANTA.png",
-    p4: "BLAZER SOL.png",
-    p5: "BLAZER ELIZA.png",
-    p6: "BLUSA BELEN.png",
-    p7: "BLUSA CINTIA.png",
-    p8: "BLUSA FATIMA.png",
-    p9: "BLUSA IVON.png"
-  };
+ const productos = {
+  p1: { img: "BLAZER ANDREA (1).png", precio: "₡16,500", adelanto: "₡10,000" },
+  p2: { img: "BLAZER ANDREA (2).png", precio: "₡16,500", adelanto: "₡10,000" },
+  p3: { img: "BLAZER SAMANTA.png", precio: "₡16,500", adelanto: "₡10,000" },
+  p4: { img: "BLAZER SOL.png", precio: "₡16,500", adelanto: "₡10,000" },
+  p5: { img: "BLAZER ELIZA.png", precio: "₡16,500", adelanto: "₡10,000" },
+  p6: { img: "BLUSA BELEN.png", precio: "₡14,500", adelanto: "₡8,500" },
+  p7: { img: "BLUSA CINTIA.png", precio: "₡14,500", adelanto: "₡8,500" },
+  p8: { img: "BLUSA FATIMA.png", precio: "₡14,500", adelanto: "₡8,500" },
+  p9: { img: "BLUSA IVON.png", precio: "₡14,500", adelanto: "₡8,500" }
+};
 
   document.getElementById("imgDetalle").src = imagenes[id];
 }
