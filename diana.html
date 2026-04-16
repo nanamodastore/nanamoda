@@ -8,44 +8,38 @@
 body {
   font-family: Arial;
   background: #f5f5f5;
+  margin: 0;
 }
 
 h1 {
   padding: 20px;
 }
 
-.container {
-.card {
-    background: white;
-    padding: 15px;
-    border-radius: 15px;
-    text-align: center;
-}
+/* GRID */
 .grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  padding: 20px;
 }
+
+/* CARD */
+.card {
+  background: white;
+  padding: 15px;
+  border-radius: 15px;
+  text-align: center;
+  border: 2px solid black;
+}
+
 .card img {
   width: 100%;
   border-radius: 10px;
 }
 
-.thumbs {
-  display: flex;
-  gap: 5px;
-  margin-top: 10px;
-  justify-content: center;
-}
-
-.thumbs img {
-  width: 50px;
-  cursor: pointer;
-  border-radius: 5px;
-}
-
+/* BOTÓN */
 button {
-  margin: 20px;
+  margin-top: 10px;
   padding: 10px 15px;
   border-radius: 20px;
   border: none;
@@ -53,11 +47,24 @@ button {
   color: white;
   cursor: pointer;
 }
-  .detalle img {
-    width: 100%;
-    max-width: 500px;
-    display: block;
-    margin: 0 auto 15px;
+
+/* DETALLE */
+.detalle {
+  display: none;
+  padding: 20px;
+}
+
+.detalle img {
+  width: 100%;
+  max-width: 500px;
+  display: block;
+  margin: auto;
+}
+
+.precio {
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 15px;
 }
 </style>
 </head>
@@ -70,9 +77,8 @@ button {
 
 <div id="catalogo" class="grid">
 
-<!-- EJEMPLO CON GALERÍA -->
-<div class="card">
- <div class="card" onclick="verProducto('p1')">
+<!-- ANDREA (ARREGLADO) -->
+<div class="card" onclick="verProducto('p1')">
   <img src="BLAZER ANDREA (1).png">
   <button>Ver detalles</button>
 </div>
@@ -82,72 +88,79 @@ button {
   <button>Ver detalles</button>
 </div>
 
-<!-- AUTOMÁTICO RESTO -->
-<div class="card" onclick="verProducto('p2')">
-    <img src="BLAZER SAMANTA.png">
-    <button>Ver detalles</button>
+<!-- RESTO -->
+<div class="card" onclick="verProducto('p3')">
+  <img src="BLAZER SAMANTA.png">
+  <button>Ver detalles</button>
 </div>
-<div class="card"><img src="BLAZER SOL.png"><h3>BLAZER SOL</h3></div>
-<div class="card"><img src="BLAZER ELIZA.png"><h3>BLAZER ELIZA</h3></div>
 
-<div class="card"><img src="BLUSA BELEN.png"><h3>BLUSA BELEN</h3></div>
-<div class="card"><img src="BLUSA CINTIA.png"><h3>BLUSA CINTIA</h3></div>
-<div class="card"><img src="BLUSA FATIMA.png"><h3>BLUSA FATIMA</h3></div>
-<div class="card"><img src="BLUSA IVON.png"><h3>BLUSA IVON</h3></div>
-<div class="card"><img src="BLUSA JEANS.png"><h3>BLUSA JEANS</h3></div>
-<div class="card"><img src="BLUSA MARGOT.png"><h3>BLUSA MARGOT</h3></div>
-<div class="card"><img src="BLUSA MOKA.png"><h3>BLUSA MOKA</h3></div>
-<div class="card"><img src="BLUSA NAYELI.png"><h3>BLUSA NAYELI</h3></div>
-<div class="card"><img src="BLUSA NAOMI.png"><h3>BLUSA NAOMI</h3></div>
-<div class="card"><img src="BLUSA THAIS.png"><h3>BLUSA THAIS</h3></div>
+<div class="card" onclick="verProducto('p4')">
+  <img src="BLAZER SOL.png">
+  <button>Ver detalles</button>
+</div>
 
-<div class="card"><img src="CASACA BRISA.png"><h3>CASACA BRISA</h3></div>
-<div class="card"><img src="CHAVO YAQUI.png"><h3>CHAVO YAQUI</h3></div>
-<div class="card"><img src="CHAVO YAQUI COLOR.png"><h3>CHAVO YAQUI COLOR</h3></div>
+<div class="card" onclick="verProducto('p5')">
+  <img src="BLAZER ELIZA.png">
+  <button>Ver detalles</button>
+</div>
 
-<div class="card"><img src="ENTERIZO XIOMARA.png"><h3>ENTERIZO XIOMARA</h3></div>
-<div class="card"><img src="ENTERIZO IRINA.png"><h3>ENTERIZO IRINA</h3></div>
+<div class="card" onclick="verProducto('p6')">
+  <img src="BLUSA BELEN.png">
+  <button>Ver detalles</button>
+</div>
 
-<div class="card"><img src="ENAGUA DIANA.png"><h3>ENAGUA DIANA</h3></div>
-<div class="card"><img src="FALDA FLOR.png"><h3>FALDA FLOR</h3></div>
-<div class="card"><img src="FALDA GRECIA.png"><h3>FALDA GRECIA</h3></div>
+<div class="card" onclick="verProducto('p7')">
+  <img src="BLUSA CINTIA.png">
+  <button>Ver detalles</button>
+</div>
 
-<div class="card"><img src="OVEROL ABIGAIL.png"><h3>OVEROL ABIGAIL</h3></div>
-<div class="card"><img src="OVEROL SUNY.png"><h3>OVEROL SUNY</h3></div>
-<div class="card"><img src="OVEROL TATIANA GRIS.png"><h3>OVEROL TATIANA GRIS</h3></div>
-<div class="card"><img src="OVEROL TATIANA MARRON.png"><h3>OVEROL TATIANA MARRON</h3></div>
-<div class="card"><img src="OVEROL TATIANA BEIGE.png"><h3>OVEROL TATIANA BEIGE</h3></div>
+<div class="card" onclick="verProducto('p8')">
+  <img src="BLUSA FATIMA.png">
+  <button>Ver detalles</button>
+</div>
 
-<div class="card"><img src="PANTALON CARGO.png"><h3>PANTALON CARGO</h3></div>
-<div class="card"><img src="PANTALON LAZO.png"><h3>PANTALON LAZO</h3></div>
-<div class="card"><img src="PANTALON YAQUI.png"><h3>PANTALON YAQUI</h3></div>
-<div class="card"><img src="PANTALON YENI.png"><h3>PANTALON YENI</h3></div>
+<div class="card" onclick="verProducto('p9')">
+  <img src="BLUSA IVON.png">
+  <button>Ver detalles</button>
+</div>
 
-<div class="card"><img src="PARCA PELUCHE.png"><h3>PARCA PELUCHE</h3></div>
+</div>
 
-<div class="card"><img src="SHORT COLOR (1).png"><h3>SHORT COLOR 1</h3></div>
-<div class="card"><img src="SHORT COLOR (2).png"><h3>SHORT COLOR 2</h3></div>
-<div class="card"><img src="SHORT LAZO.png"><h3>SHORT LAZO</h3></div>
-<div class="card"><img src="SHORT YAQUI.png"><h3>SHORT YAQUI</h3></div>
+<!-- DETALLE -->
+<div id="detalle" class="detalle">
+  <button onclick="volver()">← Volver</button>
 
-<div class="card"><img src="VESTIDO BETY.png"><h3>VESTIDO BETY</h3></div>
-<div class="card"><img src="VESTIDO DALIA.png"><h3>VESTIDO DALIA</h3></div>
-<div class="card"><img src="VESTIDO FABIOLA.png"><h3>VESTIDO FABIOLA</h3></div>
-<div class="card"><img src="VESTIDO FERNANDA.png"><h3>VESTIDO FERNANDA</h3></div>
-<div class="card"><img src="VESTIDO HAIDE.png"><h3>VESTIDO HAIDE</h3></div>
-<div class="card"><img src="VESTIDO IRIS.png"><h3>VESTIDO IRIS</h3></div>
-<div class="card"><img src="VESTIDO LUCIA.png"><h3>VESTIDO LUCIA</h3></div>
-<div class="card"><img src="VESTIDO PAMELA.png"><h3>VESTIDO PAMELA</h3></div>
-<div class="card"><img src="VESTIDO PAOLA.png"><h3>VESTIDO PAOLA</h3></div>
-<div class="card"><img src="VESTIDO ROXANA.png"><h3>VESTIDO ROXANA</h3></div>
-<div class="card"><img src="VESTIDO SARA.png"><h3>VESTIDO SARA</h3></div>
-<div class="card"><img src="VESTIDO SOFIA.png"><h3>VESTIDO SOFIA</h3></div>
+  <div class="precio">
+    Precio: ₡16,500<br>
+    Adelanto: ₡10,000
+  </div>
 
+  <img id="imgDetalle">
 </div>
 
 <script>
-function cambiar(id, img){
-  document.getElementById(id).src = img.src;
+function verProducto(id) {
+  document.getElementById("catalogo").style.display = "none";
+  document.getElementById("detalle").style.display = "block";
+
+  const imagenes = {
+    p1: "BLAZER ANDREA (1).png",
+    p2: "BLAZER ANDREA (2).png",
+    p3: "BLAZER SAMANTA.png",
+    p4: "BLAZER SOL.png",
+    p5: "BLAZER ELIZA.png",
+    p6: "BLUSA BELEN.png",
+    p7: "BLUSA CINTIA.png",
+    p8: "BLUSA FATIMA.png",
+    p9: "BLUSA IVON.png"
+  };
+
+  document.getElementById("imgDetalle").src = imagenes[id];
+}
+
+function volver() {
+  document.getElementById("catalogo").style.display = "grid";
+  document.getElementById("detalle").style.display = "none";
 }
 </script>
 
