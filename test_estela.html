@@ -1,56 +1,104 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Test</title>
+<div class="nana-search-box">
+  <input type="text" id="nana-search-input" placeholder="Buscar productos...">
+  <div id="nana-loader" style="display:none;">Buscando...</div>
+  <div id="nana-results" class="nana-results"></div>
+</div>
+
 <style>
-body{font-family:Arial}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
-.card{padding:10px;border:1px solid #ccc;text-align:center}
-img{width:100%;height:250px;object-fit:cover}
-.btn{background:black;color:white;padding:10px;margin-top:10px;cursor:pointer}
+.nana-search-box{
+  position: relative;
+  max-width: 400px;
+}
+
+#nana-search-input{
+  width: 100%;
+  padding: 12px;
+  border-radius: 25px;
+  border: 1px solid #ddd;
+}
+
+.nana-results{
+  position: absolute;
+  background: white;
+  width: 100%;
+  top: 110%;
+  left: 0;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+  display: none;
+  z-index: 9999;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.nana-item{
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+  text-decoration: none;
+  color: #000;
+  border-bottom: 1px solid #eee;
+}
+
+.nana-item img{
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+}
 </style>
-</head>
-<body>
-
-<div id="catalogo" class="grid">
-
-    <div class="card">
-        <img src="/img/BLUSA DENIM JEANS (1).jpg">
-        <h3>BLUSA DENIM  JEANS</h3>
-        <div class="btn" onclick="ver('BLUSA DENIM  JEANS','14500','8500','BLUSA DENIM JEANS (1).jpg')">Ver detalles</div>
-    </div>
-    
-    <div class="card">
-        <img src="/img/CHAQUETA PARKA DE MEZCLILLA (1).jpg">
-        <h3>CHAQUETA PARKA  DE MEZCLILLA</h3>
-        <div class="btn" onclick="ver('CHAQUETA PARKA  DE MEZCLILLA','20900','13500','CHAQUETA PARKA DE MEZCLILLA (1).jpg')">Ver detalles</div>
-    </div>
-    
-</div>
-
-<div id="detalle" style="display:none;text-align:center">
-<h2 id="nombre"></h2>
-<div id="info"></div>
-<img id="img" style="width:300px">
-<br><br>
-<button onclick="volver()">Volver</button>
-</div>
 
 <script>
-function ver(n,p,a,i){
-document.getElementById('catalogo').style.display='none';
-document.getElementById('detalle').style.display='block';
-document.getElementById('nombre').innerText=n;
-document.getElementById('info').innerText='₡'+p+' | Adelanto ₡'+a;
-document.getElementById('img').src='/img/'+i;
-}
+document.addEventListener('DOMContentLoaded', function(){
 
-function volver(){
-document.getElementById('catalogo').style.display='grid';
-document.getElementById('detalle').style.display='none';
-}
+  const input = document.getElementById('nana-search-input');
+  const results = document.getElementById('nana-results');
+  const loader = document.getElementById('nana-loader');
+
+  // ENTER → ir a resultados
+  input.addEventListener('keypress', function(e){
+    if(e.key === 'Enter'){
+      window.location.href = '/?s=' + encodeURIComponent(input.value) + '&post_type=product';
+    }
+  });
+
+  input.addEventListener('keyup', function(){
+
+    let query = this.value;
+
+    if(query.length < 2){
+      results.style.display = 'none';
+      return;
+    }
+
+    loader.style.display = 'block';
+
+    fetch('/wp-admin/admin-ajax.php?action=nana_search&term=' + encodeURIComponent(query))
+    .then(res => res.json())
+    .then(data => {
+
+      loader.style.display = 'none';
+      results.innerHTML = '';
+      results.style.display = 'block';
+
+      if(!data || data.length === 0){
+        results.innerHTML = '<div style="padding:10px">Sin resultados</div>';
+        return;
+      }
+
+      data.forEach(item => {
+        results.innerHTML += `
+          <a href="${item.link}" class="nana-item">
+            <img src="${item.image}">
+            <div>
+              <div>${item.title}</div>
+              <small>${item.price}</small>
+            </div>
+          </a>
+        `;
+      });
+
+    });
+
+  });
+
+});
 </script>
-
-</body>
-</html>
