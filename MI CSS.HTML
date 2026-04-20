@@ -1,0 +1,327 @@
+/* Ocultar mensaje de sidebar vacío en tienda (Flatsome) */
+.woocommerce .widget-area,
+.woocommerce-page .widget-area {
+    display: none !important;
+}
+
+/* Asegurar que el contenido use todo el ancho */
+.woocommerce .shop-container,
+.woocommerce-page .shop-container,
+.woocommerce .row-divided > .col + .col,
+.woocommerce-page .row-divided > .col + .col {
+    border: none !important;
+}
+
+.woocommerce .row-divided > .col,
+.woocommerce-page .row-divided > .col {
+    flex: 0 0 100% !important;
+    max-width: 100% !important;
+}
+@media (max-width: 768px){
+
+  /* 🔥 BAJAR TAMAÑO DEL TEXTO */
+  .box-text h5,
+  .box-text h3,
+  .box-text-inner {
+    font-size: 14px !important;
+    line-height: 1.2 !important;
+  }
+
+  /* 🔥 CENTRAR Y DAR ESPACIO */
+  .box-text {
+    padding: 8px !important;
+    text-align: center !important;
+  }
+
+  /* 🔥 OSCURECER FONDO (MEJOR CONTRASTE) */
+  .box-text {
+    background: rgba(0,0,0,0.45) !important;
+    color: #fff !important;
+  }
+
+  /* 🔥 QUE NO TAPE TODA LA IMAGEN */
+  .box-text {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
+
+  /* 🔥 IMAGEN MÁS LIMPIA */
+  .box-image img {
+    object-fit: cover;
+  }
+
+  /* 🔥 ESPACIADO ENTRE BLOQUES */
+  .col-inner {
+    margin-bottom: 10px !important;
+  }
+
+}
+.product-small .box-image img {
+    object-fit: contain !important;
+    height: auto !important;
+}
+
+.product-small .box-image {
+    padding-top: 0 !important;
+    height: auto !important;
+}
+
+.product-small .box-image img {
+    object-fit: contain !important;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.product-small .box-image {
+    height: 350px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.product-small .box-text {
+    text-align: center !important;
+}
+
+.product-small .box-text-inner {
+    text-align: center !important;
+}
+
+.product-small .quick-view {
+    max-width: 280px;
+    margin: 0 auto;
+    padding: 8px 0;
+
+}
+.product-small .quick-view {
+    font-size: 0;
+}
+
+.product-small .quick-view::after {
+    content: "Vista rápida";
+    font-size: 14px;
+}
+
+.product-small .quick-view {
+    border-radius: 8px;
+}
+@media (max-width: 768px) {
+    .box-text h5,
+    .box-text .name,
+    .box-text .uppercase {
+        font-size: 12px !important;
+        line-height: 1.2;
+    }
+}
+@media (max-width: 768px) {
+    .box-text p {
+        font-size: 11px !important;
+    }
+}
+/* Contenedor del buscador */
+.dgwt-wcas-search-form {
+    max-width: 320px;
+    margin: 0 auto;
+}
+
+/* Input */
+.dgwt-wcas-search-input {
+    border-radius: 30px !important;
+    padding: 10px 20px !important;
+    font-size: 14px;
+    border: 1px solid #ddd !important;
+    background: #f9f9f9;
+}
+
+.dgwt-wcas-search-form {
+    max-width: 260px;
+}
+
+.dgwt-wcas-search-input {
+    height: 36px !important;
+    font-size: 13px;
+}
+/* Arreglar lupa sobre el texto */
+.dgwt-wcas-search-submit {
+    left: 10px !important;
+    right: auto !important;
+}
+
+/* Dar espacio al texto */
+.dgwt-wcas-search-input {
+    padding-left: 35px !important;
+}
+/* Loader bonito */
+.asp_loader {
+    border: 3px solid #eee !important;
+    border-top: 3px solid #1e3a5f !important;
+    border-radius: 50%;
+    width: 25px !important;
+    height: 25px !important;
+    animation: spin 0.8s linear infinite !important;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Caja de resultados más elegante */
+.asp_main_container {
+    border-radius: 12px !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15) !important;
+}
+
+/* Loader bonito */
+.nana-loader {
+  width: 30px;
+  height: 30px;
+  border: 3px solid #eee;
+  border-top: 3px solid #1e3a5f;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin: 20px auto;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Barra de búsqueda */
+.header-search-form input {
+    border-radius: 25px !important;
+    padding: 12px 20px !important;
+    background: #f5f5f5;
+}
+
+/* Hover */
+.header-search-form input:focus {
+    background: #fff;
+    box-shadow: 0 0 0 2px #1e3a5f20;
+}
+
+/* Resultados */
+.woocommerce ul.products {
+    margin-top: 20px;
+}
+
+.header-search-form,
+.header .search-form {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    width: 100%;
+}
+.header-search-form {
+    width: 100% !important;
+    max-width: 600px !important;
+}
+
+.header .searchform-wrapper {
+    width: 100% !important;
+}
+
+.header .search-field {
+    width: 100% !important;
+}
+/* SOLO para permitir JS (hack limpio) */
+
+.autocomplete-suggestions .no-results {
+    display: none !important;
+}
+
+/* Ocultar mensaje "no hay resultados" en buscador */
+.searchform-wrapper .autocomplete-suggestions .no-results,
+.searchform-wrapper .autocomplete-suggestions div:contains("No se han encontrado productos") {
+    display: none !important;
+}
+.header-main .nana-search-box {
+  margin: 0 auto;
+  display: block;
+	
+	
+/* OCULTAR PRECIO SOLO PARA MAYORISTA */
+.wholesaler-active .single-product .product-info .price,
+.wholesaler-active .products .price {
+    display: none !important;
+}
+	
+	.test-clase {
+    background: red !important;
+}
+	
+	
+/* =======================================================
+   🔵 BLOQUE 1 - OCULTAR CARRITO SOLO SUBSCRIBER (LIMPIO)
+   ======================================================= */
+
+.no-cart-subscriber .header-cart,
+.no-cart-subscriber .cart-item,
+.no-cart-subscriber .cart-icon,
+.no-cart-subscriber .nav-top-link--cart,
+.no-cart-subscriber a[href*="cart"] {
+    display: none !important;
+}
+
+/* ================= FIN BLOQUE 1 ================= */	
+	
+	html {
+  scroll-behavior: smooth;
+}align-content
+
+	/* CONTENEDOR DEL PRELOADER */
+#pageloader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* CÍRCULO */
+.loader-circle {
+    width: 80px;
+    height: 80px;
+    border: 3px solid #e5e5e5;
+    border-radius: 50%;
+    position: relative;
+}
+
+/* FLECHA GIRANDO */
+.loader-arrow {
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    animation: spin 1.2s linear infinite;
+}
+
+/* PUNTA DE LA FLECHA */
+.loader-arrow::after {
+    content: '';
+    position: absolute;
+    top: -4px;
+    right: -2px;
+    width: 12px;
+    height: 12px;
+    border-top: 3px solid #b3003c; /* vino 🔥 */
+    border-right: 3px solid #b3003c;
+    transform: rotate(45deg);
+}
+
+	background: linear-gradient(180deg, #d65a5a 0%, #b73b3b 100%);align-content
+	
+	.card-producto {
+  transition: all 0.3s ease;
+}
+
+.card-producto .product,
+.card-producto .eael-product-wrap {
+  transition: all 0.3s ease;
+}
+
+.card-producto .product:hover,
+.card-producto .eael-product-wrap:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
